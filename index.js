@@ -3,6 +3,10 @@ const port = 8080
 const swaggerUi = require ('swagger-ui-express')
 const swaggerDocument = require ('./docs/swagger.json');
 
+app.get('/tickets',(req,res)=>{
+    res.send(["Concerts","Opera"])
+})
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port,()=>{
