@@ -70,6 +70,40 @@
                 "summary": "Get a list of all the locations where tickets are being sold.",
                 "description": "Return a list of all locations where tickers are being sold."
             }
+        },
+        "/performers": {
+            "summary": "Get a list of all the performers.",
+            "description": "Returns a list of all performers in API",
+            "get": {
+                "tags": [
+                    "performers"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of performers": {
+                                        "value": [
+                                            "Luciano Pavarotti",
+                                            "Hortus Musicus"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Return a list of performers."
+                    }
+                },
+                "summary": "Get a list of all the performers.",
+                "description": "Returns a list of all performers in API"
+            }
         }
     }
 }

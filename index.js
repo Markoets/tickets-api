@@ -12,6 +12,9 @@ app.get('/locations',(req,res)=>{
 })
 
 
+app.get('/performers',(req,res)=>{
+    res.send(["Luciano Pavarotti","Hortus Musicus"])
+})
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
