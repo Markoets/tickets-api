@@ -54,11 +54,13 @@ app.get('/tickets', (req, res) => {
 
 app.get("/tickets/:id", (req, res) => {
     if (!(parseInt(req.params.id) > 0)) {
-        return res.status(400).send({ error: "ID must be a positive integer" })
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
     }
     let result = tickets.find(x => x.id === parseInt(req.params.id))
-    if(typeof(result)==='undefined'){
-        res.status(404).send({error:"Ticket not found."})
+    if (typeof (result) === 'undefined') {
+        res.status(404).send({ error: "Ticket not found." })
+        return
     }
     res.send(result)
 })
@@ -72,11 +74,13 @@ app.get('/locations', (req, res) => {
 
 app.get("/locations/:id", (req, res) => {
     if (!(parseInt(req.params.id) > 0)) {
-        return res.status(400).send({ error: "ID must be a positive integer" })
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
     }
     let result = locations.find(x => x.id === parseInt(req.params.id))
-    if(typeof(result)==='undefined'){
-        res.status(404).send({error:"Location not found."})
+    if (typeof (result) === 'undefined') {
+        res.status(404).send({ error: "Location not found." })
+        return
     }
     res.send(result)
 })
@@ -89,11 +93,13 @@ app.get('/actors', (req, res) => {
 
 app.get("/actors/:id", (req, res) => {
     if (!(parseInt(req.params.id) > 0)) {
-        return res.status(400).send({ error: "ID must be a positive integer" })
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
     }
     let result = actors.find(x => x.id === parseInt(req.params.id))
-    if(typeof(result)==='undefined'){
-        res.status(404).send({error:"Actor not found."})
+    if (typeof (result) === 'undefined') {
+        res.status(404).send({ error: "Actor not found." })
+        return
     }
     res.send(result)
 })

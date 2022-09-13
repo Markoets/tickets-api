@@ -1,9 +1,163 @@
-oneapi: 3.0.2
+openapi: 3.0.2
 info:
-  title: Tickets-API
-  version: 1.0.0
-  description: >-
-  ### This is a Swagger UI for our Tickets API
-
-
-  ###Error handling
+    title: Tickets-API
+    version: 1.0.0
+    description: '### This is a Swagger UI for our Tickets API'
+paths:
+    /tickets:
+        summary: Get a list of all tickets
+        description: Returns a list of all different type of tickets in API
+        get:
+            tags:
+                - tickets
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                List of tickets:
+                                    value:
+                                        - Avatar
+                                        - Top gun
+                    description: Returns a list of tickets
+            summary: Get a list of all tickets
+            description: Returns a list of all different type of tickets in API
+    /locations:
+        summary: Get a list of all the locations where tickets are being sold.
+        description: Return a list of all locations where tickers are being sold.
+        get:
+            tags:
+                - locations
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                List of locations:
+                                    value: '["Tallinn","Tartu"])'
+                    description: Returns a list of locations where tickets are being sold.
+            summary: Get a list of all the locations where tickets are being sold.
+            description: Return a list of all locations where tickers are being sold.
+    /performers:
+        summary: Get a list of all the performers.
+        description: Returns a list of all performers in API
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                List of performers:
+                                    value:
+                                        - Luciano Pavarotti
+                                        - Hortus Musicus
+                    description: Return a list of performers.
+            summary: Get a list of all the performers.
+            description: Returns a list of all performers in API
+    '/tickets/{id}':
+        get:
+            tags:
+                - details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Full details of tickets:
+                                    value: '  {id: 1, name: "Top gun", cast: "Tom Cruise, Jennifer Connelly, Jon Hamm", price: 15.99},'
+                    description: Returns full details of a given id ticket
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Ticket /w+ was not found:
+                                    value: ' Ticket \\w+ was not found in ticket array.'
+                    description: Ticket was not found in tickets array
+            operationId: id
+            summary: Get full details of the tickets
+            description: Returns full details of a given id ticket
+    '/performers/{id}':
+        get:
+            tags:
+                - details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Full details of actors:
+                                    value: "{ id: 1, name: \"Tom Cruise\", gender: \"Male\", age: 60 },\r\n{ id: 2, name: \"Emma Roberts\", gender: \"Female\", age: 31 },"
+                    description: Returns full details of a given performer
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                'Performer/w+  was not found ':
+                                    value: Performer \\w+ was not found in game array.
+                    description: Performer was not found in performers array
+            operationId: id
+            summary: Get full details of performers
+            description: Returns full details of a given performer
+    '/locations/{id}':
+        get:
+            tags:
+                - details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Full details of a locations:
+                                    value: "{ id: 1, country: \"Estonia\", city: \"Tallinn\", street: \"Solaris\" },\r\n{ id: 2, country: \"Estonia\", city: \"Pärnu\", street: \"Saku\" },"
+                    description: Returns full details of a given location
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Location /w+ was not found:
+                                    value: Location \\w+ was not found in game array
+                    description: Location was not found in locations array
+            operationId: id
+            summary: Get full details of locations
+            description: Returns full details of a given location
+components:
+    schemas:
+        error:
+            title: Root Type for error
+            description: ''
+            type: object
+            properties:
+                error:
+                    type: string
+            example:
+                error: Error message
