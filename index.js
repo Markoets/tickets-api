@@ -56,8 +56,6 @@ app.get('/locations/:id',(req,res)=>{
     res.send(locations[req.params.id])
 })
 
-
-
 app.get('/actors',(req,res)=>{
     res.send(actors)
 })
