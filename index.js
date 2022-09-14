@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 require("./routes/ticketRoutes")(app)
+require("./routes/locationRoutes")(app)
+require("./routes/actorRoutes")(app)
 /*
 const tickets = [
     { id: 1, name: "Top gun", cast: "Tom Cruise, Jennifer Connelly, Jon Hamm", price: 15.99 },

@@ -2,19 +2,19 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const TicketSchema = new Schema({
-    name:{
-        type:String,
+    name: {
+        type: String,
         required: "Ticket name is mandatory"
     },
-    
-    cast:{
-        type:String,
+
+    cast: {
+        type: String,
         required: "Name of the cast is mandatory"
     },
-    price:{
-        type:Number,
+    price: {
+        type: Number,
         required: "Price is mandatory"
     }
 })
 
-module.exports = mongoose.model("Ticket",TicketSchema)
+module.exports = mongoose.model("Ticket", TicketSchema)
