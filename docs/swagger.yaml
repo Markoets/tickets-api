@@ -117,7 +117,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 'Performer/w+  was not found ':
-                                    value: Performer \\w+ was not found in game array.
+                                    value: Performer \\w+ was not found in performers array.
                     description: Performer was not found in performers array
             operationId: id
             summary: Get full details of performers
@@ -145,7 +145,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 Location /w+ was not found:
-                                    value: Location \\w+ was not found in game array
+                                    value: Location \\w+ was not found in locations array
                     description: Location was not found in locations array
             operationId: id
             summary: Get full details of locations

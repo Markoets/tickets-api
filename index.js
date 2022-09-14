@@ -3,7 +3,18 @@ const port = 8080
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml')
+const mongoose = require("mongoose")
+const Ticket = require ("./models/ticketModel")
+const bodyParser = require("body-parser")
 
+mongoose.Promise = global.Promise
+mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+
+require("./routes/ticketRoutes")(app)
+/*
 const tickets = [
     { id: 1, name: "Top gun", cast: "Tom Cruise, Jennifer Connelly, Jon Hamm", price: 15.99 },
     { id: 2, name: "The Invitation", cast: "Nathalie Emmanuel, Thomas Doherty", price: 13.99 },
@@ -50,7 +61,7 @@ app.get('/tickets', (req, res) => {
         return res.status(404).send({error:"ticket not found"})
     }
     res.send(tickets[req.params.id -1])
-})*/
+})
 
 app.get("/tickets/:id", (req, res) => {
     if (!(parseInt(req.params.id) > 0)) {
@@ -104,7 +115,7 @@ app.get("/actors/:id", (req, res) => {
     res.send(result)
 })
 
-
+*/
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port, () => {
