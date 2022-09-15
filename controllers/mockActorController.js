@@ -1,3 +1,6 @@
+const { faker } = require('@faker-js/faker');
+
+
 const actors = [
     { id: 1, name: "Tom Cruise", gender: "Male", age: 60 },
     { id: 2, name: "Emma Roberts", gender: "Female", age: 31 },
@@ -10,6 +13,22 @@ const actors = [
     { id: 9, name: "Ray Liotta", gender: "Male", age: 67 },
     { id: 10, name: "Joe Pesci", gender: "Male", age: 79 },
 ]
+
+
+
+for (let i = 0; i < 20; i++) {
+    // const randomName = `  ${faker.word.adjective()}   ${faker.name.fullName()} ${faker.finance.amount(5, 10, 2, '€') } ` 
+     actors.push({id:11+i,
+         name:faker.name.fullName(),
+         gender:faker.helpers.arrayElement(['M', 'F']),
+         age:faker.finance.amount(20, 97) 
+     })
+     console.log(actors);
+ }
+
+
+
+ 
 
 exports.getAll = (req, res) => {
   res.send(actors)

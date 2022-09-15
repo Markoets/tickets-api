@@ -21,5 +21,8 @@
     "nodemon": "^2.0.19",
     "swagger-ui-express": "^4.5.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0"
   }
 }

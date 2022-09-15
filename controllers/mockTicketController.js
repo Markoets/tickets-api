@@ -1,3 +1,5 @@
+const { faker } = require('@faker-js/faker');
+
 const tickets = [
     { id: 1, name: "Top gun", cast: "Tom Cruise, Jennifer Connelly, Jon Hamm", price: 15.99 },
     { id: 2, name: "The Invitation", cast: "Nathalie Emmanuel, Thomas Doherty", price: 13.99 },
@@ -11,6 +13,15 @@ const tickets = [
     { id: 10, name: "Nope", cast: "Barbie Ferreira, Keke Palmer, Michael Wincott", price: 12.99 },
 ]
 
+for (let i = 0; i < 20; i++) {
+   // const randomName = `  ${faker.word.adjective()}   ${faker.name.fullName()} ${faker.finance.amount(5, 10, 2, '€') } ` 
+    tickets.push({id:11+i,
+        name:faker.word.adjective(),
+        cast:faker.name.fullName(),
+        price:faker.finance.amount(5, 10, 2, '€') 
+    })
+    console.log(tickets);
+}
 exports.getAll = (req, res) => {
   res.send(tickets)
 }

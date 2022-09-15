@@ -1,3 +1,5 @@
+const { faker } = require('@faker-js/faker');
+
 const locations = [
 
         { id: 1, country: "Estonia", city: "Tallinn", street: "Solaris" },
@@ -12,6 +14,16 @@ const locations = [
         { id: 10, country: "Estonia", city: "Tallinn", street: "Endla" },
     
 ]
+
+for (let i = 0; i < 20; i++) {
+    // const randomName = `  ${faker.word.adjective()}   ${faker.name.fullName()} ${faker.finance.amount(5, 10, 2, '€') } ` 
+    locations.push({id:11+i,
+         country:faker.address.country(),
+         city:faker.address.cityName(),
+         street:faker.address.street()
+     })
+     console.log(locations);
+ }
 
 exports.getAll = (req, res) => {
   res.send(locations)
