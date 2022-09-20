@@ -1,4 +1,4 @@
-const ticketsList = require("../controllers/mockTicketController")
+const ticketsList = require("../controllers/ticketController")
 
 module.exports = function (app) {
     app.route("/tickets")
