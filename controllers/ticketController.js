@@ -43,8 +43,23 @@ exports.getById = async function (req, res) {    //Read
     return
 }
 exports.editById = function (req, res) {     //Update
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+   console.log(req.body,'selgitus');
+    Ticket.updateOne({_id:req.params.id},{$set: req.body},null,(err,ticket)=>{
+        
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            console.log(ticket);
+            res.status(200).json(ticket)
+        }
+    })
+    }
 
-}
+
 exports.deleteById = function (req, res) {   //Delete
     if (!(parseInt(req.params.id) > 0)) {
         res.status(400).send({ error: "ID must be a positive integer" })

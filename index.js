@@ -1,3 +1,4 @@
+const { faker } = require('@faker-js/faker');
 const app = require('express')()
 const port = 8080
 const swaggerUi = require('swagger-ui-express')
@@ -16,6 +17,65 @@ app.use(bodyParser.json())
 require("./routes/ticketRoutes")(app)
 require("./routes/locationRoutes")(app)
 require("./routes/actorRoutes")(app)
+
+
+/* mySeedScript.js */
+
+// require the necessary libraries
+const MongoClient = require("mongodb").MongoClient;
+
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+async function seedDB() {
+    // Connection URL
+    const uri = "mongodb://localhost:27017/ticketsApiDb";
+
+    const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        // useUnifiedTopology: true,
+    });
+
+    try {
+        await client.connect();
+        console.log("Connected correctly to server");
+
+        const collection = client.db("ticketsApiDb").collection("tickets");
+
+        // The drop() command destroys all data from a collection.
+        // Make sure you run it against proper database and collection.
+        collection.drop();
+
+        // make a bunch of time series data
+        let timeSeriesData = [];
+
+        for (let i = 0; i < 5000; i++) {
+            const name = faker.name.firstName();
+            const cast = faker.name.lastName();
+            const price = faker.finance.amount(5,20,0);
+            let ticket = {
+              
+                    cast: name, cast,
+                    name,
+                    price,
+           
+            };
+
+            
+            timeSeriesData.push(ticket);
+        }
+        collection.insertMany(timeSeriesData);
+
+        console.log("Database seeded! :)");
+        
+    } catch (err) {
+        console.log(err.stack);
+    }
+}
+
+seedDB();
+
 /*
 const tickets = [
     { id: 1, name: "Top gun", cast: "Tom Cruise, Jennifer Connelly, Jon Hamm", price: 15.99 },
