@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Actor = mongoose.model("Actor")
-
-
+const  ClassTransformer = require  ('class-transformer')
+const ActorDto = require('../models/actorDto')
 
 
 exports.getAll = (req, res) => {
@@ -27,12 +27,50 @@ exports.createNew = (req, res) => {
         }
     })
 }
-exports.getById = function (req, res) {    //Read
+exports.getById = async function (req, res) {    //Read
     
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+    Actor.findOne({_id:(req.params.id)},(err,actor)=>{
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            res.status(200).json(new ActorDto(actor))
+        }
+    })      
+    return
 }
 exports.editById = function (req, res) {     //Update
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+   console.log(req.body,'selgitus');
+   Actor.updateOne({_id:req.params.id},{$set: req.body},null,(err,actor)=>{
+        
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            console.log(actor);
+            res.status(200).json(actor)
+        }
+    })
+    }
 
-}
+
 exports.deleteById = function (req, res) {   //Delete
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+    Actor.deleteOne({_id:(req.params.id)},(err,actor)=>{
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            res.status(200).json()
+        }
+    })  
 
 }

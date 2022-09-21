@@ -6,6 +6,7 @@ const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml')
 const mongoose = require("mongoose")
 const Ticket = require ("./models/ticketModel")
+const Actor = require ("./models/actorModel")
 const Location = require ("./models/locationModel")
 const bodyParser = require("body-parser")
 
