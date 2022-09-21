@@ -1,4 +1,4 @@
-const locationsList = require("../controllers/mockLocationController")
+const locationsList = require("../controllers/locationController")
 
 module.exports = function (app) {
     app.route("/locations")

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Location = mongoose.model("Location")
-
-
+const  ClassTransformer = require  ('class-transformer')
+const LocationDto = require('../models/locationDto')
 
 
 exports.getAll = (req, res) => {
@@ -27,12 +27,50 @@ exports.createNew = (req, res) => {
         }
     })
 }
-exports.getById = function (req, res) {    //Read
+exports.getById = async function (req, res) {    //Read
     
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+    Location.findOne({_id:(req.params.id)},(err,location)=>{
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            res.status(200).json(new LocationDto(location))
+        }
+    })      
+    return
 }
 exports.editById = function (req, res) {     //Update
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+   console.log(req.body,'selgitus');
+    Location.updateOne({_id:req.params.id},{$set: req.body},null,(err,location)=>{
+        
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            console.log(location);
+            res.status(200).json(location)
+        }
+    })
+    }
 
-}
+
 exports.deleteById = function (req, res) {   //Delete
+    if (!(parseInt(req.params.id) > 0)) {
+        res.status(400).send({ error: "ID must be a positive integer" })
+        return
+    }
+    Location.deleteOne({_id:(req.params.id)},(err,location)=>{
+        if (err) {
+            res.status(400).send(err)
+        } else {
+            res.status(200).json()
+        }
+    })  
 
 }
