@@ -18,12 +18,15 @@ exports.getAll = (req, res) => {
 
 exports.createNew = (req, res) => {  
     console.log(req.body);   //Create
+
     const new_location = new Location(req.body)
     new_location.save((err, location) => {
         if (err) {
             res.status(400).send(err)
         } else {
-            res.status(201).json(location)
+            res.status(201)
+            .location(`${getBaseUrl(req)}/locations/${location.id}`)
+            .json(location)
         }
     })
 }
@@ -65,7 +68,7 @@ exports.deleteById = function (req, res) {   //Delete
         res.status(400).send({ error: "ID must be a positive integer" })
         return
     }
-    Location.deleteOne({_id:(req.params.id)},(err,location)=>{
+    Location.findByIdAndDelete(req.params.id,(err,location)=>{
         if (err) {
             res.status(400).send(err)
         } else {
@@ -73,4 +76,9 @@ exports.deleteById = function (req, res) {   //Delete
         }
     })  
 
+}
+
+function getBaseUrl(req){
+    return req.connection && req.connection.encrypted
+    ? 'https' : 'http' + `://${req.headers.host}`
 }

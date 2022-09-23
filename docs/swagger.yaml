@@ -46,9 +46,9 @@ paths:
                     description: Returns a list of locations where tickets are being sold.
             summary: Get a list of all the locations where tickets are being sold.
             description: Return a list of all locations where tickers are being sold.
-    /performers:
-        summary: Get a list of all the performers.
-        description: Returns a list of all performers in API
+    /actors:
+        summary: Get a list of all the actors.
+        description: Returns a list of all actors in API
         get:
             responses:
                 '200':
@@ -59,13 +59,13 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of performers:
+                                List of actors:
                                     value:
                                         - Luciano Pavarotti
                                         - Hortus Musicus
-                    description: Return a list of performers.
-            summary: Get a list of all the performers.
-            description: Returns a list of all performers in API
+                    description: Return a list of actors.
+            summary: Get a list of all the actors.
+            description: Returns a list of all actors in API
     '/tickets/{id}':
         get:
             tags:
@@ -94,7 +94,7 @@ paths:
             operationId: id
             summary: Get full details of the tickets
             description: Returns full details of a given id ticket
-    '/performers/{id}':
+    '/actors/{id}':
         get:
             tags:
                 - details
@@ -117,10 +117,10 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 'Performer/w+  was not found ':
-                                    value: Performer \\w+ was not found in performers array.
-                    description: Performer was not found in performers array
+                                    value: Performer \\w+ was not found in actors array.
+                    description: Performer was not found in actors array
             operationId: id
-            summary: Get full details of performers
+            summary: Get full details of actors
             description: Returns full details of a given performer
     '/locations/{id}':
         get:

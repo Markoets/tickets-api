@@ -23,7 +23,9 @@ exports.createNew = (req, res) => {
         if (err) {
             res.status(400).send(err)
         } else {
-            res.status(201).json(ticket)
+            res.status(201)
+            .location(`${getBaseUrl(req)}/tickets/${ticket.id}`)
+            .json(ticket)
         }
     })
 }
@@ -73,4 +75,11 @@ exports.deleteById = function (req, res) {   //Delete
         }
     })  
 
+}
+
+
+
+function getBaseUrl(req){
+    return req.connection && req.connection.encrypted
+    ? 'https' : 'http' + `://${req.headers.host}`
 }
