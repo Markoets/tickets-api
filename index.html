@@ -18,12 +18,48 @@
             <th>Film cast </th>
         </tr>
         <tr v-for="ticket in tickets">
-            <td>{{ticket.name}}</td>
+            <td @click="getTicket(ticket._id)">{{ticket.name}}</td>
             <td>{{ticket.price}}</td>
             <td>{{ticket.cast}}</td>
         </tr>
     </table>
+    
+
+<div class="modal fade modal-sm" id="ticketInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="ticketInfoModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Film details<h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body">
+          <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ticketInModal.id}}</td>
+        </tr>
+        <tr>
+            <th>CAST</th>
+            <td>{{ticketInModal.cast}}</td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td>{{ticketInModal.name}}</td>
+        </tr>
+        <tr>
+            <th>PRICE</th>
+            <td>{{ticketInModal.price}}</td>
+        </tr>
+    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     </div>
+    </div>
+  </div>
+</div>
+</div>
 
 </body>
  
@@ -39,12 +75,21 @@
   createApp({
     data() {
       return {
+        ticketInModal:{},
         tickets:[]
       }
     },
       async created(){
           this.tickets= await (await fetch('http://localhost:8080/tickets')).json();
       
+    },
+    methods: {
+        getTicket: async function (id) {
+            this.ticketInModal = await (await fetch (`http://localhost:8080/tickets/${id}`)).json()
+            console.log(this.ticketInModal);
+            const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
+            ticketInfoModal.show()
+        }
     }
   }).mount('#app')
 </script>
