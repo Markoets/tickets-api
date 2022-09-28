@@ -6,32 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Tickets list</title>
+    <title>Actors list</title>
   
 </head>
 <body>
-        <a href="actors.html">Actors</a>
+        <a href="index.html">Tickets</a>
         <a href="locations.html">Locations</a>
     <div id="app">
-    <table id="ticketsTable" class="moviestable table-striped table-bordered">
+    <table id="actorsTable" class="moviestable table-striped table-bordered">
         <tr>
-            <th>Film name</th>
-            <th>Film price </th>
-            <th>Film cast </th>
+            <th>Actor name</th>
+            <th>Actor gender </th>
+            <th>Actor age </th>
         </tr>
-        <tr v-for="ticket in tickets">
-            <td @click="getTicket(ticket.id)">{{ticket.name}}</td>
-            <td>{{ticket.price}}</td>
-            <td>{{ticket.cast}}</td>
+        <tr v-for="actor in actors">
+            <td @click="getActor(actor._id)">{{actor.name}}</td>
+            <td>{{actor.gender}}</td>
+            <td>{{actor.age}}</td>
         </tr>
     </table>
     
 
-<div class="modal fade modal-sm" id="ticketInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="ticketInfoModal" aria-hidden="true">
+<div class="modal fade modal-sm" id="actorInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="actorInfoModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Film details<h5>
+        <h5 class="modal-title">Actor details<h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </button>
       </div>
@@ -39,19 +39,19 @@
           <table>
         <tr>
             <th>ID</th>
-            <td>{{ticketInModal.id}}</td>
+            <td>{{actorInModal.id}}</td>
         </tr>
         <tr>
-            <th>CAST</th>
-            <td>{{ticketInModal.cast}}</td>
+            <th>name</th>
+            <td>{{actorInModal.name}}</td>
         </tr>
         <tr>
-            <th>NAME</th>
-            <td>{{ticketInModal.name}}</td>
+            <th>gender</th>
+            <td>{{actorInModal.gender}}</td>
         </tr>
         <tr>
-            <th>PRICE</th>
-            <td>{{ticketInModal.price}}</td>
+            <th>age</th>
+            <td>{{actorInModal.age}}</td>
         </tr>
     </table>
       </div>
@@ -77,20 +77,20 @@
   createApp({
     data() {
       return {
-        ticketInModal:{},
-        tickets:[]
+        actorInModal:{},
+        actors:[]
       }
     },
       async created(){
-          this.tickets= await (await fetch('http://localhost:8080/tickets')).json();
+          this.actors= await (await fetch('http://localhost:8080/actors')).json();
       
     },
     methods: {
-        getTicket: async function (id) {
-            this.ticketInModal = await (await fetch (`http://localhost:8080/tickets/${id}`)).json()
-            console.log(this.ticketInModal);
-            const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
-            ticketInfoModal.show()
+        getActor: async function (id) {
+            this.actorInModal = await (await fetch (`http://localhost:8080/actors/${id}`)).json()
+            console.log(this.actorInModal);
+            const  actorInfoModal = new bootstrap.Modal(document.getElementById('actorInfoModal'),{})
+            actorInfoModal.show()
         }
     }
   }).mount('#app')
