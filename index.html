@@ -20,7 +20,7 @@
             <th>Film cast </th>
         </tr>
         <tr v-for="ticket in tickets">
-            <td @click="getTicket(ticket.id)">{{ticket.name}}</td>
+            <td @click="getTicket(ticket._id)">{{ticket.name}}</td>
             <td>{{ticket.price}}</td>
             <td>{{ticket.cast}}</td>
         </tr>
