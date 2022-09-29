@@ -5,24 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
+    <link rel="stylesheet" href="css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>Tickets list</title>
   
 </head>
 <body>
-        <a href="actors.html">Actors</a>
-        <a href="locations.html">Locations</a>
+  
     <div id="app">
-    <table id="ticketsTable" class="moviestable table-striped table-bordered">
+      <a href="actors.html" class="btn-text">Actors</a>
+      <a href="locations.html" class="btn-text">Locations</a>
+    <table id="ticketsTable" class="ticketsShow moviestable table-bordered table-hover ">
         <tr>
             <th>Film name</th>
             <th>Film price </th>
             <th>Film cast </th>
         </tr>
         <tr v-for="ticket in tickets">
-            <td @click="getTicket(ticket._id)">{{ticket.name}}</td>
-            <td>{{ticket.price}}</td>
-            <td>{{ticket.cast}}</td>
+            <td @click="getTicket(ticket._id)" class="ticketname">{{ticket.name}}</td>
+            <td class="ticketprice ">{{ticket.price}}</td>
+            <td class="ticketcast">{{ticket.cast}}</td>
         </tr>
     </table>
     
