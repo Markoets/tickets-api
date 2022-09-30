@@ -22,14 +22,74 @@
     background-color: rgb(73, 65, 65);
 }
 
-.ticketsShow{
-  margin-left: 54rem;
+.ticketsShow {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 800px;
+
 }
 
 
-.ticketname{
-  margin-left: 50rem;
-  color: rgb(83, 172, 150);
+.modal-body{
+  background-color: rgba(82,82,82,255);
+
+}
+
+.modal-footer{
+  --bs-modal-bg: red;
+}
+
+th,
+td {
+  padding: 7px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+th {
+  text-align: left;
+}
+
+thead >th {
+    background-color: #55608f;
+}
+
+.modal-footer{
+  background-color: red(39, 39, 39);
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: rgb(39, 39, 39);
+  margin-left :80%;
+  margin-top: 7px;
+}
+
+
+tbody >tr:hover{
+      background-color: rgba(255,255,255,0.3);
+  }
+
+tbody>td:hover:before{
+  position: relative;
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -9999px;
+      bottom: -9999px;
+      background-color: rgba(255,255,255,0.2);
+      z-index: -1;
+    
+}
+
+
+table {
+
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 .btn-text:hover{
