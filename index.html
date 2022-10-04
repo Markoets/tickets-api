@@ -12,9 +12,39 @@
 </head>
 <body>
   
-    <div id="app">
+    <div id="app"class = "topnav"  style="height: 123px; background-color: rgba(51, 0, 0, 0.795);" >
       <a href="actors.html" class="btn-text">Actors</a>
       <a href="locations.html" class="btn-text">Locations</a>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for ticket names">
+
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./img/movie.jpg" class="d-block w-20" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./img/batman.jpg" class="d-block w-20" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./img/topgun.jpg" class="d-block w-20" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+          <span class="visually-hidden ">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
     <table id="ticketsTable" class="ticketsShow moviestable table-bordered table-hover ">
         <tr>
             <th>Film name</th>
@@ -26,6 +56,7 @@
             <td class="ticketprice ">{{ticket.price}}</td>
             <td class="ticketcast">{{ticket.cast}}</td>
         </tr>
+        
     </table>
     
 
@@ -44,12 +75,12 @@
             <td>{{ticketInModal.id}}</td>
         </tr>
         <tr>
-            <th>CAST</th>
-            <td>{{ticketInModal.cast}}</td>
+          <th>NAME</th>
+          <td>{{ticketInModal.name}}</td>
         </tr>
         <tr>
-            <th>NAME</th>
-            <td>{{ticketInModal.name}}</td>
+           <th>CAST</th>
+            <td>{{ticketInModal.cast}}</td>
         </tr>
         <tr>
             <th>PRICE</th>
@@ -100,5 +131,32 @@
 </script>
 
 </script>
+
+
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("ticketsTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
+
 </body>
 </html>
