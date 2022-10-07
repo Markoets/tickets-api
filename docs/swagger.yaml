@@ -26,6 +26,27 @@ paths:
                     description: Returns a list of tickets
             summary: Get a list of all tickets
             description: Returns a list of all different type of tickets in API
+        post:
+            tags:
+                - tickets
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Tickets:
+                                    value:
+                                        name: Top gun
+                                        cast: Tom Cruise
+                                        price: 5
+                                        _id: 633ff64bcd135ea44ed447ff
+                                        __v: 0
+            summary: Add a ticket to the list of tickets
+            description: Add a ticket to the api
     /locations:
         summary: Get a list of all the locations where tickets are being sold.
         description: Return a list of all locations where tickers are being sold.
@@ -45,11 +66,10 @@ paths:
                                     value: '["Tallinn","Tartu"])'
                     description: Returns a list of locations where tickets are being sold.
             summary: Get a list of all the locations where tickets are being sold.
-            description: Return a list of all locations where tickers are being sold.
-    /actors:
-        summary: Get a list of all the actors.
-        description: Returns a list of all actors in API
-        get:
+            description: Return a list of all locations where tickets are being sold.
+        post:
+            tags:
+                - locations
             responses:
                 '200':
                     content:
@@ -59,13 +79,16 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of actors:
+                                Locations:
                                     value:
-                                        - Luciano Pavarotti
-                                        - Hortus Musicus
-                    description: Return a list of actors.
-            summary: Get a list of all the actors.
-            description: Returns a list of all actors in API
+                                        country: Estonia
+                                        city: Tartu
+                                        street: Aida
+                                        _id: 632d92439aa994257e0d0943
+                                        __v: 0
+                    description: Adds a location to the list of locations
+            summary: Add a location to the list
+            description: Add a location to the api.
     '/tickets/{id}':
         get:
             tags:
@@ -94,34 +117,20 @@ paths:
             operationId: id
             summary: Get full details of the tickets
             description: Returns full details of a given id ticket
-    '/actors/{id}':
-        get:
+        put:
             tags:
-                - details
+                - tickets
             responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    type: string
-                            examples:
-                                Full details of actors:
-                                    value: "{ id: 1, name: \"Tom Cruise\", gender: \"Male\", age: 60 },\r\n{ id: 2, name: \"Emma Roberts\", gender: \"Female\", age: 31 },"
-                    description: Returns full details of a given performer
-                '404':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/error'
-                            examples:
-                                'Performer/w+  was not found ':
-                                    value: Performer \\w+ was not found in actors array.
-                    description: Performer was not found in actors array
-            operationId: id
-            summary: Get full details of actors
-            description: Returns full details of a given performer
+                '200': {}
+            summary: Update a certain ticket by id.
+            description: Update a certain ticket's details if needed by id
+        delete:
+            tags:
+                - tickets
+            responses:
+                '200': {}
+            summary: Delete a certain ticket.
+            description: Delete a certain ticket by id from the list
     '/locations/{id}':
         get:
             tags:
@@ -145,11 +154,111 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 Location /w+ was not found:
-                                    value: Location \\w+ was not found in locations array
+                                    value: Location \\w+ was not found in game array
                     description: Location was not found in locations array
             operationId: id
             summary: Get full details of locations
             description: Returns full details of a given location
+        put:
+            tags:
+                - locations
+            responses:
+                '200': {}
+            summary: Update a certain location by id.
+            description: 'Update the country,city,street if needed on locations'
+        delete:
+            tags:
+                - locations
+            responses:
+                '200': {}
+            summary: Delete a certain location.
+            description: Delete a certain location by id from the list.
+    /actors:
+        summary: Get a list of all the performers.
+        description: Returns a list of all performers in API
+        get:
+            tags:
+                - actors
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                List of performers:
+                                    value:
+                                        - Luciano Pavarotti
+                                        - Hortus Musicus
+                    description: Return a list of actors.
+            summary: Get a list of all the actors.
+            description: Returns a list of all actors in API
+        post:
+            tags:
+                - actors
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Actors:
+                                    value:
+                                        name: Peeter
+                                        gender: Male
+                                        age: 51
+                                        _id: 633ff536cd135ea44ed447fb
+                                        __v: 0
+                    description: Adds a actor to the list of actors
+            summary: Add a actor to the list
+            description: Add a actor to the api.
+    '/actors/{id}':
+        get:
+            tags:
+                - details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Full details of actors:
+                                    value: "{ id: 1, name: \"Tom Cruise\", gender: \"Male\", age: 60 },\r\n{ id: 2, name: \"Emma Roberts\", gender: \"Female\", age: 31 },"
+                    description: Returns full details of a given performer
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                'Performer/w+  was not found ':
+                                    value: Performer \\w+ was not found in game array.
+                    description: Performer was not found in performers array
+            operationId: id
+            summary: Get full details of performers
+            description: Returns full details of a given performer
+        put:
+            tags:
+                - actors
+            responses:
+                '200': {}
+            summary: Update a certain actor by id.
+            description: Update a certain actor's details if needed by id.
+        delete:
+            tags:
+                - actors
+            responses:
+                '200': {}
+            summary: Delete a certain actor.
+            description: Delete a certain actor by id from the list.
 components:
     schemas:
         error:

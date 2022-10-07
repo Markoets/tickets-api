@@ -1,6 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const app = require('express')()
 const port = 8080
+
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml')
@@ -9,7 +10,15 @@ const Ticket = require ("./models/ticketModel")
 const Actor = require ("./models/actorModel")
 const Location = require ("./models/locationModel")
 const bodyParser = require("body-parser")
+// Importing modules
+const express = require("express");
+require ('dotenv').config();
+const SECRET = process.env.SECRET
 
+const jwt = require("jsonwebtoken");
+const User = require("./models/userModel");
+const bcrypt = require('bcrypt');
+const router = express.Router();
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
 
@@ -32,6 +41,7 @@ require("./routes/actorRoutes")(app)
 
 // require the necessary libraries
 const MongoClient = require("mongodb").MongoClient;
+const { Router } = require('express');
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -187,6 +197,130 @@ app.get("/actors/:id", (req, res) => {
 })
 
 */
+// Handling post request
+app.post("/login", async (req, res, next) => {
+   
+    let { email, password } = req.body;
+    
+    let existingUser;
+    
+    try {
+      existingUser = await User.findOne({ email: email });
+    } catch {
+       return res.status(400).json((err))
+    }
+    
+  
+    if (!existingUser || !await bcrypt.compare(req.body.password,existingUser.password)) {
+      const error = Error("Wrong details please check at once");
+      return res.status(400).json(next(error))
+    }
+    
+    let token;
+    
+    try {
+      //Creating jwt token
+      token = jwt.sign(
+        { userId: existingUser.id, email: existingUser.email },
+        SECRET,
+        { expiresIn: "1h" }
+      );
+    } catch (err) {
+      console.log(err);
+      const error = new Error("Error! Something went wrong.");
+      return next(error);
+    }
+    console.log(token);
+    res.status(200).json({
+      success: true,
+      data: {
+        userId: existingUser.id,
+        email: existingUser.email,
+        token: token,
+      },
+    });
+  });
+
+  app.get('/login', (req, res) => {
+    res.sendFile('login.html', { root: '.' })
+  })
+
+
+  app.get('/signup', (req, res) => {
+    res.sendFile('signup.html', { root: '.' })
+  })
+
+  // Handling post request
+  app.post("/signup", async (req, res, next) => {
+    const { name, email, password } = req.body;
+    const newUser = User({
+      name,
+      email,
+      password,
+    });
+  
+    try {
+      await newUser.save();
+    } catch (err){
+      res.status(401).json(next(err))
+     
+    }
+    let token;
+  
+    try {
+      token = jwt.sign(
+        { userId: newUser.id, email: newUser.email },
+        SECRET,
+        { expiresIn: "1h" }
+      );
+    } catch (err) {   
+        console.log(SECRET);
+      const error = new Error("Error! Something went wrong.");
+      return next(error);
+    }
+    res.status(201).json({
+      success: true,
+      data: { userId: newUser.id, email: newUser.email, token: token },
+    });
+  });
+  
+  
+  app.get('/accessResource', (req, res)=>{  
+      
+  
+      const token2 = req.headers.authorization
+      if(token2==undefined){
+          const error = Error("Wrong details please check at once");
+         
+       return   res.status(401).json(error)
+      }
+      const token = token2.split(' ')[1]; 
+      //Authorization: 'Bearer TOKEN'
+      
+  
+       
+      // verify a token symmetric
+      jwt.verify(token, SECRET, function(err, decoded) {
+      });
+  
+      if(!token)
+      {
+          res.status(200).json({success:false, message: "Error! Token was not provided."});
+      }
+      //Decoding the token
+      const decodedToken = jwt.verify(token,SECRET,function(err,decoded) {
+          if(err){
+          
+            return  res.status(400).json({success:false,message: "error not valid token"});
+          }
+          return decoded;
+      });
+      res.status(200).json({success:true, data:{userId:decodedToken.userId,
+       email:decodedToken.email}});   
+  }),
+  
+  
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port, () => {
