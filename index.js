@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-
+  require("./routes/loginRoutes")(app)
 require("./routes/ticketRoutes")(app)
 require("./routes/locationRoutes")(app)
 require("./routes/actorRoutes")(app)
@@ -198,53 +198,6 @@ app.get("/actors/:id", (req, res) => {
 
 */
 // Handling post request
-app.post("/login", async (req, res, next) => {
-   
-    let { email, password } = req.body;
-    
-    let existingUser;
-    
-    try {
-      existingUser = await User.findOne({ email: email });
-    } catch {
-       return res.status(400).json((err))
-    }
-    
-  
-    if (!existingUser || !await bcrypt.compare(req.body.password,existingUser.password)) {
-      const error = Error("Wrong details please check at once");
-      return res.status(400).json(next(error))
-    }
-    
-    let token;
-    
-    try {
-      //Creating jwt token
-      token = jwt.sign(
-        { userId: existingUser.id, email: existingUser.email },
-        SECRET,
-        { expiresIn: "1h" }
-      );
-    } catch (err) {
-      console.log(err);
-      const error = new Error("Error! Something went wrong.");
-      return next(error);
-    }
-    console.log(token);
-    res.status(200).json({
-      success: true,
-      data: {
-        userId: existingUser.id,
-        email: existingUser.email,
-        token: token,
-      },
-    });
-  });
-
-  app.get('/login', (req, res) => {
-    res.sendFile('login.html', { root: '.' })
-  })
-
 
   app.get('/signup', (req, res) => {
     res.sendFile('signup.html', { root: '.' })
