@@ -1,12 +1,12 @@
-const mainController = require('../index.js');
-const router = express.Router();
-
-
-
-
- router.get('/signup',mainController.getSignup);
+const loginController = require("../controllers/signupController")
 
 
  module.exports = function (app) {
-    app.route("signup")
+    app.route("/signup")
+    .post(loginController.signupInfo)
+    .get(loginController.signupPage)
+
+
  }
+
+

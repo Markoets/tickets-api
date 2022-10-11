@@ -31,6 +31,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+  require("./routes/signupRoutes")(app)
   require("./routes/loginRoutes")(app)
 require("./routes/ticketRoutes")(app)
 require("./routes/locationRoutes")(app)
@@ -199,44 +200,7 @@ app.get("/actors/:id", (req, res) => {
 */
 // Handling post request
 
-  app.get('/signup', (req, res) => {
-    res.sendFile('signup.html', { root: '.' })
-  })
-
-  // Handling post request
-  app.post("/signup", async (req, res, next) => {
-    const { name, email, password } = req.body;
-    const newUser = User({
-      name,
-      email,
-      password,
-    });
-  
-    try {
-      await newUser.save();
-    } catch (err){
-      res.status(401).json(next(err))
-     
-    }
-    let token;
-  
-    try {
-      token = jwt.sign(
-        { userId: newUser.id, email: newUser.email },
-        SECRET,
-        { expiresIn: "1h" }
-      );
-    } catch (err) {   
-        console.log(SECRET);
-      const error = new Error("Error! Something went wrong.");
-      return next(error);
-    }
-    res.status(201).json({
-      success: true,
-      data: { userId: newUser.id, email: newUser.email, token: token },
-    });
-  });
-  
+ 
   
   app.get('/accessResource', (req, res)=>{  
       
