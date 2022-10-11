@@ -19,6 +19,9 @@ const jwt = require("jsonwebtoken");
 const User = require("./models/userModel");
 const bcrypt = require('bcrypt');
 const router = express.Router();
+
+app.use(express.static('public'));
+app.use(express.static('files'))
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
 
@@ -36,6 +39,7 @@ app.use(function(req, res, next) {
 require("./routes/ticketRoutes")(app)
 require("./routes/locationRoutes")(app)
 require("./routes/actorRoutes")(app)
+require("./routes/mainRoutes")(app)
 
 
 /* mySeedScript.js */
@@ -43,7 +47,9 @@ require("./routes/actorRoutes")(app)
 // require the necessary libraries
 const MongoClient = require("mongodb").MongoClient;
 const { Router } = require('express');
-
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/img'));
+app.use(express.static('public'));
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -202,41 +208,7 @@ app.get("/actors/:id", (req, res) => {
 
  
   
-  app.get('/accessResource', (req, res)=>{  
-      
-  
-      const token2 = req.headers.authorization
-      if(token2==undefined){
-          const error = Error("Wrong details please check at once");
-         
-       return   res.status(401).json(error)
-      }
-      const token = token2.split(' ')[1]; 
-      //Authorization: 'Bearer TOKEN'
-      
-  
-       
-      // verify a token symmetric
-      jwt.verify(token, SECRET, function(err, decoded) {
-      });
-  
-      if(!token)
-      {
-          res.status(200).json({success:false, message: "Error! Token was not provided."});
-      }
-      //Decoding the token
-      const decodedToken = jwt.verify(token,SECRET,function(err,decoded) {
-          if(err){
-          
-            return  res.status(400).json({success:false,message: "error not valid token"});
-          }
-          return decoded;
-      });
-      res.status(200).json({success:true, data:{userId:decodedToken.userId,
-       email:decodedToken.email}});   
-  }),
-  
-  
+
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
