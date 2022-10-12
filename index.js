@@ -1,6 +1,6 @@
 const { faker } = require('@faker-js/faker');
 const app = require('express')()
-const port = 8080
+const port = 8088
 
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')
@@ -19,6 +19,15 @@ const jwt = require("jsonwebtoken");
 const User = require("./models/userModel");
 const bcrypt = require('bcrypt');
 const router = express.Router();
+
+const helmet = require("helmet");
+
+helmet({   contentSecurityPolicy: {  
+    useDefaults: true,
+     directives: {
+          'script-src': 
+          ["'self'", "https://unpkg.com/vue@3.2.40/dist/vue.global.js","https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js","https://unpkg.com/vue@3/dist/vue.esm-browser.js"] 
+         }  }  })
 
 app.use(express.static('public'));
 app.use(express.static('files'))

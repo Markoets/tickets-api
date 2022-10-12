@@ -1,5 +1,5 @@
 const app = require('express')()
-const port = 8080
+
 
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')

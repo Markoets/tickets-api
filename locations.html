@@ -82,12 +82,12 @@
       }
     },
       async created(){
-          this.locations= await (await fetch('http://localhost:8080/locations')).json();
+          this.locations= await (await fetch('http://localhost:8088/locations')).json();
       
     },
     methods: {
         getLocation: async function (id) {
-            this.locationInModal = await (await fetch (`http://localhost:8080/locations/${id}`)).json()
+            this.locationInModal = await (await fetch (`http://localhost:8088/locations/${id}`)).json()
             console.log(this.locationInModal);
             const  locationInfoModal = new bootstrap.Modal(document.getElementById('locationInfoModal'),{})
             locationInfoModal.show()

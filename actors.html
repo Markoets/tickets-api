@@ -82,12 +82,12 @@
       }
     },
       async created(){
-          this.actors= await (await fetch('http://localhost:8080/actors')).json();
+          this.actors= await (await fetch('http://localhost:8088/actors')).json();
       
     },
     methods: {
         getActor: async function (id) {
-            this.actorInModal = await (await fetch (`http://localhost:8080/actors/${id}`)).json()
+            this.actorInModal = await (await fetch (`http://localhost:8088/actors/${id}`)).json()
             console.log(this.actorInModal);
             const  actorInfoModal = new bootstrap.Modal(document.getElementById('actorInfoModal'),{})
             actorInfoModal.show()

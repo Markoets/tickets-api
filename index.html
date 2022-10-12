@@ -16,8 +16,6 @@
       <a href="actors.html" class="btn-text">Actors</a>
       <a href="locations.html" class="btn-text">Locations</a>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for ticket names">
-
-
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -26,18 +24,18 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./public/movie.jpg" class="d-block w-20" alt="Siin peaks pilt olema">
-      
-          <div class="carousel-item">
-            <img src="./public/batman.jpg" class="d-block w-20" alt="Siin peaks pilt olema">
+            <img src="batman.jpg" class="d-block w-20" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="./public/topgun.jpg" class="d-block w-20" alt="Siin peaks pilt olema">
+            <img src="movie.jpg" class="d-block w-20" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="topgun.jpg" class="d-block w-20" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-          <span class="visually-hidden ">Previous</span>
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -116,12 +114,12 @@
       }
     },
       async created(){
-          this.tickets= await (await fetch('http://localhost:8080/tickets')).json();
+          this.tickets= await (await fetch('http://localhost:8088/tickets')).json();
       
     },
     methods: {
         getTicket: async function (id) {
-            this.ticketInModal = await (await fetch (`http://localhost:8080/tickets/${id}`)).json()
+            this.ticketInModal = await (await fetch (`http://localhost:8088/tickets/${id}`)).json()
             console.log(this.ticketInModal);
             const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
             ticketInfoModal.show()
