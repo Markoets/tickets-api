@@ -5,15 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Actors list</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <title>Actors list</title>
   
 </head>
 <body>
-        <a href="index.html">Tickets</a>
-        <a href="locations.html">Locations</a>
+
+       
+    <div id="app"class = "topnav"  style="height: 123px; background-color: rgba(51, 0, 0, 0.795);" >
+      <a href="/" class="btn-text">Tickets</a>
+      <a href="location" class="btn-text">Locations</a>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for actor names">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="tophanks.jpg" class="d-block w-20" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="freeman.jpg" class="d-block w-20" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="hopkins.jpg" class="d-block w-20" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     <div id="app">
-    <table id="actorsTable" class="moviestable table-striped table-bordered">
+    <table id="actorsTable" class="moviestable table-striped table-bordered ticketsTable ">
         <tr>
             <th>Actor name</th>
             <th>Actor gender </th>
@@ -27,42 +58,41 @@
     </table>
     
 
-<div class="modal fade modal-sm" id="actorInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="actorInfoModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Actor details<h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </button>
+    <div class="modal fade modal-sm " id="actorInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="actorInfoModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <h5 class="modal-title">Film details<h5>
+            <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table>
+              <tr>
+                  <th>ID</th>
+                  <td>{{actorInModal.id}}</td>
+              </tr>
+              <tr>
+                  <th>name</th>
+                  <td>{{actorInModal.name}}</td>
+              </tr>
+              <tr>
+                  <th>gender</th>
+                  <td>{{actorInModal.gender}}</td>
+              </tr>
+              <tr>
+                  <th>age</th>
+                  <td>{{actorInModal.age}}</td>
+              </tr>
+          </table>
+        <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+    
+          
+        </div>
+        </div>
       </div>
-      <div class="modal-body">
-          <table>
-        <tr>
-            <th>ID</th>
-            <td>{{actorInModal.id}}</td>
-        </tr>
-        <tr>
-            <th>name</th>
-            <td>{{actorInModal.name}}</td>
-        </tr>
-        <tr>
-            <th>gender</th>
-            <td>{{actorInModal.gender}}</td>
-        </tr>
-        <tr>
-            <th>age</th>
-            <td>{{actorInModal.age}}</td>
-        </tr>
-    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     </div>
-    </div>
-  </div>
-</div>
-</div>
-
 </body>
  
       

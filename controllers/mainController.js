@@ -24,8 +24,19 @@ app.use(express.static('files'))
 const path = require('path')
 
 exports.mainPage = async (req, res, next) => {
-  
+    console.log("saada lehele");
     res.sendFile('index.html', { root: '.' })
 }
 
+
+exports.locationsPage = async (req, res, next) => {
+  
+    res.sendFile('locations.html', { root: '.' })
+}
+
+
+exports.actorsPage = async (req, res, next) => {
+  
+    res.sendFile('actors.html', { root: '.' })
+}
 
