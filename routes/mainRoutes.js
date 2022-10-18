@@ -1,5 +1,5 @@
 const mainController = require("../controllers/mainController")
-
+const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
  module.exports = function (app) {
     console.log("siin peaks lehele");
     app.route("/")
@@ -10,6 +10,16 @@ const mainController = require("../controllers/mainController")
 
     app.route("/actor")
     .get(mainController.actorsPage)
+
+   /* app.route("/ticketsadd")
+    .get(mainController.addTickets)*/
+
+
+   app.route("/logout")
+   .get(mainController.logout_get)
+
+
+   app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd'));
  }
 
  

@@ -15,38 +15,55 @@ const User = mongoose.model("User")
 exports.signupPage=(req, res) => {
     res.sendFile('signup.html', { root: '.' })
   }
-
-  // Handling post request
-  exports.signupInfo = async (req, res, next) => {
-    const { name, email, password } = req.body;
-    const newUser = User({
-      name,
-      email,
-      password,
-    });
+  const handleErrors = (err) => {
+    console.log(err.message, err.code);
+    let errors = { email: '', password: '' };
   
-    try {
-      await newUser.save();
-    } catch (err){
-      res.status(401).json(next(err))
-     
+    if (err.message === 'incorrect email') {
+      errors.email = 'That email is not registered';
     }
-    let token;
   
-    try {
-      token = jwt.sign(
-        { userId: newUser.id, email: newUser.email },
-        SECRET,
-        { expiresIn: "1h" }
-      );
-    } catch (err) {   
-        console.log(SECRET);
-      const error = new Error("Error! Something went wrong.");
-      return next(error);
+    if (err.message === 'incorrect password') {
+      errors.password = 'That password is incorrect';
     }
-    res.status(201).json({
-      success: true,
-      data: { userId: newUser.id, email: newUser.email, token: token },
+  
+    if (err.code === 11000) {
+      errors.email = 'that email is already registered';
+      return errors;
+    }
+  
+  
+    if (err.message.includes('user validation failed')) {
+      Object.values(err.errors).forEach(({ properties }) => {
+  
+        errors[properties.path] = properties.message;
+      });
+    }
+  
+    return errors;
+  }
+  const maxAge = 3 * 24 * 60 * 60;
+  const createToken = (id) => {
+    return jwt.sign({ id }, 'net ninja secret', {
+      expiresIn: maxAge
     });
   };
+  // Handling post request
+  exports.signupInfo = async (req, res, next) => {
+    const { email, password } = req.body;
+
+  try {
+    const user = await User.create({ email, password });
+    const token = createToken(user._id);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(201).json({ user: user._id });
+  }
+  catch(err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
+  };
+  
+
+
   

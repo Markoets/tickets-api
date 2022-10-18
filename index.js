@@ -1,7 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const app = require('express')()
 const port = 8088
-
+const passport = require('passport');
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml')
@@ -19,8 +19,20 @@ const jwt = require("jsonwebtoken");
 const User = require("./models/userModel");
 const bcrypt = require('bcrypt');
 const router = express.Router();
-
+app.set('view engine','ejs');
 const helmet = require("helmet");
+const { requireAuth, checkUser } = require('./middleware/auth.Middleware');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+app.use(session({
+    secret: 'SALADUS', 
+    resave: false, 
+    saveUninitialized: false
+  }))
+app.use(passport.initialize());
+app.use(passport.session());
+
+// After you declare "app"
 
 helmet({   contentSecurityPolicy: {  
     useDefaults: true,
@@ -31,6 +43,8 @@ helmet({   contentSecurityPolicy: {
 
 app.use(express.static('public'));
 app.use(express.static('files'))
+app.use(express.json());
+app.use(cookieParser());
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
 
