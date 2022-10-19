@@ -23,6 +23,7 @@ const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
 
    app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd'));
 
+   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd'));
  }
 
  
