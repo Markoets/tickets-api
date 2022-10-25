@@ -47,13 +47,13 @@
     <table id="ticketsTable" class="moviestable table-striped table-bordered ticketsTable">
         <tr>
             <th>Film name</th>
-            <th>Film price </th>
             <th>Film cast </th>
+            <th>Film price </th>
         </tr>
         <tr v-for="ticket in tickets">
             <td @click="getTicket(ticket._id)" class="ticketname">{{ticket.name}}</td>
-            <td class="ticketprice ">{{ticket.price}}</td>
             <td class="ticketcast">{{ticket.cast}}</td>
+            <td class="ticketprice ">{{ticket.price}}</td>
         </tr>
         
     </table>
