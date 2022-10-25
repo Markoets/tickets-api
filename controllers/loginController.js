@@ -55,7 +55,7 @@ exports.loginInfo = async (req, res, next) => {
     const user = await User.login(email, password);
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-   res.redirect("ticketsadd")
+   res.redirect("admin")
   } 
   catch (err) {
     const errors = handleErrors(err);
