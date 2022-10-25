@@ -19,7 +19,7 @@
     padding: 1rem;
     transition: all 0.3s;
     margin-right: 2rem;
-    background-color: rgb(73, 65, 65);
+    background-color: hsl(0, 6%, 27%);
     margin: 2rem;
 }
 
@@ -70,7 +70,7 @@ thead >th {
 
 
 tbody >tr:hover{
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(14, 201, 98, 0.3);
   }
 
 
@@ -98,8 +98,7 @@ table {
 }
 
 .btn-text:hover{
-  color: white;
-    background-color: rgb(233, 46, 46);
+  color: rgb(8, 204, 51);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
 }
