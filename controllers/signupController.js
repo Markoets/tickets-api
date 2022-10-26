@@ -20,11 +20,11 @@ exports.signupPage=(req, res) => {
     let errors = { email: '', password: '' };
   
     if (err.message === 'incorrect email') {
-      errors.email = 'That email is not registered';
+      errors.email = 'Incorrect email or password';
     }
   
     if (err.message === 'incorrect password') {
-      errors.password = 'That password is incorrect';
+      errors.password = 'Incorrect email or password';
     }
   
     if (err.code === 11000) {
