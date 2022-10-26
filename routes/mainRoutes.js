@@ -1,5 +1,7 @@
 const mainController = require("../controllers/mainController")
 const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
+const express = require("express");
+const router = express.Router();
  module.exports = function (app) {
     console.log("siin peaks lehele");
     app.route("/")
@@ -28,5 +30,3 @@ const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
    app.get('/admin', requireAuth, (req, res) => res.render('admin'));
 
  }
-
- 

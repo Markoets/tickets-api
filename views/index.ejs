@@ -54,6 +54,11 @@
             <td @click="getTicket(ticket._id)" class="ticketname">{{ticket.name}}</td>
             <td class="ticketcast">{{ticket.cast}}</td>
             <td class="ticketprice ">{{ticket.price}}</td>
+            <td>
+             <form :action="`/delete/${ticket._id}`" method="post">
+              <button type='submit' class="nupp">Delete</button>
+          </form>
+            </td>
         </tr>
         
     </table>
@@ -104,6 +109,8 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
+
+
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
@@ -123,15 +130,12 @@
         getTicket: async function (id) {
             this.ticketInModal = await (await fetch (`http://localhost:8088/tickets/${id}`)).json()
             console.log(this.ticketInModal);
+            console.log('/${id}');
             const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
             ticketInfoModal.show()
         }
-    }
-  }).mount('#app')
+    }}).mount('#app')
 </script>
-
-</script>
-
 
 
 <script>
