@@ -105,78 +105,9 @@
  
       
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
 
-<script>
-
-async function deleteItem(ticket) {
-  let requestOptions = {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-  }
-
-  const response = await fetch("/delete/:id", requestOptions); // <----- HERE! 
-  if (response.status != 204) {
-    throw Error("Cannot delete your item from list");
-  }
-  return ticket;
-}
-</script>
-
-
-<script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-
-  createApp({
-    data() {
-      return {
-        token:"",
-        ticketInModal:{},
-        tickets:[]
-      }
-    },
-      async created(){
-          this.tickets= await (await fetch('http://localhost:8088/tickets')).json();
-      
-    },
-    methods: {
-        getTicket: async function (id) {
-            this.ticketInModal = await (await fetch (`http://localhost:8088/tickets/${id}`)).json()
-            console.log(this.ticketInModal);
-            console.log('/${id}');
-            const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
-            ticketInfoModal.show()
-        }
-    }}).mount('#app')
-</script>
-
-
-<script>
-  function myFunction() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("ticketsTable");
-    tr = table.getElementsByTagName("tr");
-  
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-  </script>
 
 </body>
 </html>

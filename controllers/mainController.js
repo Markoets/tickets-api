@@ -24,11 +24,11 @@ app.use(express.static('files'))
 const path = require('path');
 const { log } = require('console');
 
-exports.mainPage = (req, res) => {
+/*exports.mainPage = (req, res) => {
   const token = req.cookies.jwt;
   console.log("tere mainpage "+token);
   res.render('index');
-};
+};*/
 
 exports.locationsPage = (req, res) => {
 

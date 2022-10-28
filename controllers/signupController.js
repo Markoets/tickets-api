@@ -13,7 +13,7 @@ mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
 const User = mongoose.model("User")
 
 exports.signupPage=(req, res) => {
-    res.sendFile('signup.html', { root: '.' })
+  res.render('signup');
   }
   const handleErrors = (err) => {
     console.log(err.message, err.code);

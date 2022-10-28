@@ -3,10 +3,14 @@ const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
 const express = require("express");
 const router = express.Router();
  module.exports = function (app) {
-    console.log("siin peaks lehele");
-    app.route("/")
-    .get(mainController.mainPage)
-
+ app.get('/', function(req, res) {
+    var locals = {
+      title: 'Tere',
+      description: 'Page Description',
+      header: 'Page Header'
+    };
+    res.render('index', locals);
+  });
     app.route("/location")
     .get(mainController.locationsPage)
 

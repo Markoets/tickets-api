@@ -259,6 +259,43 @@ paths:
                 '200': {}
             summary: Delete a certain actor.
             description: Delete a certain actor by id from the list.
+    /login:
+        summary: Show the login page
+        description: Show the login page
+        get:
+            tags:
+                - login
+            responses:
+                '302':
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                            examples:
+                                Location:
+                                    value: admin
+                        'Set-Cookie:':
+                            schema:
+                                type: string
+                            examples:
+                                JWT:
+                                    value: >-
+                                        jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDAwMDg4MWIxZjVlZDFmYWQ3OGU5OSIsImlhdCI6MTY2Njk1MjQ4MCwiZXhwIjoxNjY3MjExNjgwfQ.IFNnXuPz28E253xbCrko1QQIJQ0wJneNGAprCRIcQuA;
+                                        Max-Age=259200; Path=/; Expires=Mon, 31 Oct 2022 10:21:20 GMT;
+                                        HttpOnly
+                    description: 'Logged in '
+                '400':
+                    content:
+                        application/json:
+                            examples:
+                                '{"errors":{"email":"Incorrect email or password","password":""}}':
+                                    value:
+                                        errors:
+                                            email: Incorrect email or password
+                                            password: ''
+                    description: Bad request
+            summary: Show the login page
+            description: Show the login page
 components:
     schemas:
         error:

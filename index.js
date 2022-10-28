@@ -1,4 +1,5 @@
 const { faker } = require('@faker-js/faker');
+const express = require("express");
 const app = require('express')()
 const port = 8088
 const passport = require('passport');
@@ -11,7 +12,7 @@ const Actor = require ("./models/actorModel")
 const Location = require ("./models/locationModel")
 const bodyParser = require("body-parser")
 // Importing modules
-const express = require("express");
+
 require ('dotenv').config();
 const SECRET = process.env.SECRET
 
@@ -44,6 +45,7 @@ helmet({   contentSecurityPolicy: {
 app.use(express.static('public'));
 app.use(express.static('files'))
 app.use(express.json());
+app.set("layout extractScripts", true)
 app.use(cookieParser());
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/ticketsApiDb")
