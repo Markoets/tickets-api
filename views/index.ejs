@@ -55,7 +55,7 @@
             <td class="ticketcast">{{ticket.cast}}</td>
             <td class="ticketprice ">{{ticket.price}}</td>
             <td>
-             <form :action="`/delete/${ticket._id}`" method="post">
+             <form :action="`tickets/delete/${ticket._id}`" method="post">
               <button type='submit' class="nupp">Delete</button>
           </form>
             </td>
@@ -109,6 +109,22 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
+
+<script>
+
+async function deleteItem(ticket) {
+  let requestOptions = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  }
+
+  const response = await fetch("/delete/:id", requestOptions); // <----- HERE! 
+  if (response.status != 204) {
+    throw Error("Cannot delete your item from list");
+  }
+  return ticket;
+}
+</script>
 
 
 <script type="module">

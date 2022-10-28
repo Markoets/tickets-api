@@ -99,7 +99,7 @@ async function seedDB() {
         // make a bunch of time series data
         let timeSeriesData = [];
 
-        for (let i = 0; i < 5000; i++) {
+        for (let i = 0; i < 500; i++) {
             const name = faker.name.firstName();
             const cast = faker.name.lastName();
             const price = faker.finance.amount(5,20,0);
@@ -124,6 +124,12 @@ async function seedDB() {
 }
 
 seedDB();
+
+
+app.post('/tickets/delete/:id', async (req, res) => {
+    await Ticket.deleteOne({_id: req.params.id})
+    return res.redirect('/')
+  });
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
