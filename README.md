@@ -13,4 +13,4 @@ npm i
 
 npm start
 
-After that open index.html to see all the tickets and localhost:8080/docs to see the tickets api documentation.
+After that go to localhost:8088 to see all the tickets and localhost:8088/docs to see the tickets api documentation.
