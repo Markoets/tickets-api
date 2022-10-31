@@ -7,7 +7,8 @@ const router = express.Router();
     var locals = {
       title: 'Tere',
       description: 'Page Description',
-      header: 'Page Header'
+      header: 'Page Header',
+      greeting:'tere AAAAAAAAAAAAAA'
     };
     res.render('index', locals);
   });

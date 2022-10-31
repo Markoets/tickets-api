@@ -5,15 +5,11 @@
   <title><%= title %></title>
 
   <% /* Place any styles in the page in this section. */ %>
-  <%- style %>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <% /*
-    Define an required placeholder for the header.
-    If a page doesn't define a header, there will be an error when rendering.
-    */ %>
-    <%- header %>
+    <%- include('./partials/mainHeader.ejs') %>
   </header>
 
   <%- body %>
@@ -44,6 +40,7 @@
         }
       },
         async created(){
+          console.log("tickets");
             this.tickets= await (await fetch('http://localhost:8088/tickets')).json();
         
       },
@@ -55,7 +52,7 @@
               const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
               ticketInfoModal.show()
           },
-          deleteItem(ticket) {
+          deleteItem: async function(ticket) {
     let requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -68,30 +65,39 @@
     return ticket;
   },      myFunction() {
       // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("ticketsTable");
-      tr = table.getElementsByTagName("tr");
+      // var input, filter, table, tr, td, i, txtValue;
+      // input = document.getElementById("myInput");
+      // filter = input.value.toUpperCase();
+      // table = document.getElementById("ticketsTable");
+      // tr = table.getElementsByTagName("tr");
     
       // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
+      // for (i = 0; i < tr.length; i++) {
+      //   td = tr[i].getElementsByTagName("td")[0];
+      //   if (td) {
+      //     txtValue = td.textContent || td.innerText;
+      //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      //       tr[i].style.display = "";
+      //     } else {
+      //       tr[i].style.display = "none";
+      //     }
+      //   }
+      // }
     }
       }}).mount('#app')
   </script>
 
   
-
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      greeting: 'Welcome to your Vue.js app!',
+    },
+    methods: {
+    }
+  })
+</script>
 </body>
 </html>
 
