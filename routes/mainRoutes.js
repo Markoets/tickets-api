@@ -3,16 +3,16 @@ const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
 const express = require("express");
 const router = express.Router();
  module.exports = function (app) {
- app.get('/', function(req, res) {
-    res.render('index',{title:'Express'});
+ app.get('/ticket', function(req, res) {
+    res.render('ticket',{title:'Express'});
   });
 
     app.route("/location")
     .get(mainController.locationsPage)
 
-    app.route("/actor")
-    .get(mainController.actorsPage)
-
+    app.get('/actor', function(req, res) {
+      res.render('actor',{title:'Express'});
+    });
    /* app.route("/ticketsadd")
     .get(mainController.addTickets)*/
 

@@ -35,24 +35,26 @@
       data() {
         return {
           token:"",
-          ticketInModal:{},
-          tickets:[]
+          locationInModal:{},
+          locations:[]
         }
       },
         async created(){
           console.log("tickets");
-            this.tickets= await (await fetch('http://localhost:8088/tickets')).json();
+          const url = window.location.href
+          console.log(url+'s');
+            this.locations= await (await fetch('http://localhost:8088/locations')).json();
         
       },
       methods: {
-          getTicket: async function (id) {
-              this.ticketInModal = await (await fetch (`http://localhost:8088/tickets/${id}`)).json()
-              console.log(this.ticketInModal);
+          getLocation: async function (id) {
+              this.locationInModal = await (await fetch (`http://localhost:8088/locations/${id}`)).json()
+              console.log(this.locationInModal);
               console.log('/${id}');
-              const  ticketInfoModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'),{})
-              ticketInfoModal.show()
+              const  locationInfoModal = new bootstrap.Modal(document.getElementById('locationInfoModal'),{})
+              locationInfoModal.show()
           },
-          deleteItem: async function(ticket) {
+          deleteItem: async function(location) {
     let requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -62,7 +64,7 @@
     if (response.status != 204) {
       throw Error("Cannot delete your item from list");
     }
-    return ticket;
+    return location;
   },      myFunction() {
       // Declare variables
       // var input, filter, table, tr, td, i, txtValue;
