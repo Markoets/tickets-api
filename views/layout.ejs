@@ -11,9 +11,9 @@
   <header>
     <%- include('./partials/mainHeader.ejs') %>
   </header>
-
+<div id ="app">
   <%- body %>
-
+</div>
   <footer>
     <% /*
     Define an optional placeholder for the footer.
@@ -88,16 +88,7 @@
   </script>
 
   
-<script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      greeting: 'Welcome to your Vue.js app!',
-    },
-    methods: {
-    }
-  })
-</script>
+
 </body>
 </html>
 

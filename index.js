@@ -39,7 +39,7 @@ helmet({   contentSecurityPolicy: {
     useDefaults: true,
      directives: {
           'script-src': 
-          ["'self'", "https://unpkg.com/vue@3.2.40/dist/vue.global.js","https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js","https://unpkg.com/vue@3/dist/vue.esm-browser.js"] 
+          ["'self'", "https://unpkg.com/vue@3.2.40/dist/vue.global.js","https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js","https://unpkg.com/vue@3/dist/vue.esm-browser.js","https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js","https://unpkg.com/vue@3/dist/vue.global.js"] 
          }  }  })
 
 app.use(express.static('public'));

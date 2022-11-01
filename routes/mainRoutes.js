@@ -4,14 +4,9 @@ const express = require("express");
 const router = express.Router();
  module.exports = function (app) {
  app.get('/', function(req, res) {
-    var locals = {
-      title: 'Tere',
-      description: 'Page Description',
-      header: 'Page Header',
-      greeting:'tere AAAAAAAAAAAAAA'
-    };
-    res.render('index', locals);
+    res.render('index',{title:'Express'});
   });
+
     app.route("/location")
     .get(mainController.locationsPage)
 
