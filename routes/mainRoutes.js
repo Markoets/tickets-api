@@ -7,6 +7,10 @@ const router = express.Router();
     res.render('ticket',{title:'Express'});
   });
 
+  app.get('/', function(req, res) {
+    res.render('index',{title:'Home'});
+  });
+
     app.route("/location")
     .get(mainController.locationsPage)
 
@@ -21,12 +25,12 @@ const router = express.Router();
    .get(mainController.logout_get)
 
 
-   app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd'));
+   app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd',{title:"Login"}));
 
-   app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd'));
+   app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd',{title:"Login"}));
 
-   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd'));
+   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd',{title:"Login"}));
    
-   app.get('/admin', requireAuth, (req, res) => res.render('admin'));
+   app.get('/admin', requireAuth, (req, res) => res.render('admin',{title:"Login"}));
 
  }

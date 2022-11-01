@@ -59,12 +59,12 @@ exports.loginInfo = async (req, res, next) => {
   } 
   catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json({ errors });
+   res.render("login",{title:"incorrect password or email"})
   }
 
 
 }
 
 exports.loginPage=(req, res) => {
-  res.render('login');
+  res.render('login',{title:"Login"});
 }
