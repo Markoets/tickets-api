@@ -1,132 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link rel="stylesheet" href="style.css"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-       <title>Locations list</title>
-  
-</head>
-<body>
-  <div id="app"class = "topnav"  style="height: 123px; background-color: rgba(51, 0, 0, 0.795);" >
-    <a href="/" class="btn-text">Tickets</a>
-    <a href="actor" class="btn-text">Actors</a>
-    <a href="admin" class="btn-text">Admin</a>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for location names">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="cinema1.jpg" class="d-block w-20" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="cinema2.jpg" class="d-block w-20" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="cinema3.jpg" class="d-block w-20" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+<%= header %>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="cinema1.jpg" class="d-block w-20" alt="...">
     </div>
-    <div id="app">
-      <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
-        <tr>
-          <th>Country name</th>
-          <th>City name </th>
-          <th>Street name </th>
+    <div class="carousel-item">
+      <img src="cinema2.jpg" class="d-block w-20" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="cinema3.jpg" class="d-block w-20" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+  <div id="app">
+    <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
+      <tr>
+        <th>Country name</th>
+        <th>City name </th>
+        <th>Street name </th>
       </tr>
-          <tr v-for="location in locations">
-            <td @click="getLocation(location._id)">{{location.country}}</td>
-            <td>{{location.city}}</td>
-            <td>{{location.street}}</td>
-        </tr>
-      </table>
-      
-    
-      <div class="locationsmodal modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="locationInfoModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header ">
-              <h5 class="modal-title">Film details<h5>
-              <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-              </button>
-            </div>
-            <div class="modal-body locationModal">
-              <table>
-                <tr>
-                    <th>ID</th>
-                    <td>{{locationInModal.id}}</td>
-                </tr>
-                <tr>
-                    <th>Country</th>
-                    <td>{{locationInModal.country}}</td>
-                </tr>
-                <tr>
-                    <th>City</th>
-                    <td>{{locationInModal.city}}</td>
-                </tr>
-                <tr>
-                    <th>Street</th>
-                    <td>{{locationInModal.street}}</td>
-                </tr>
-              </table>
-          <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-      
-            
+      <tr v-for="location in locations">
+        <td @click="getLocation(location._id)">{{location.country}}</td>
+        <td>{{location.city}}</td>
+        <td>{{location.street}}</td>
+      </tr>
+    </table>
+
+
+    <div class="locationsmodal modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false"
+      tabindex="-1" aria-labelledby="locationInfoModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <h5 class="modal-title">Film details<h5>
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                </button>
           </div>
+          <div class="modal-body locationModal">
+            <table>
+              <tr>
+                <th>ID</th>
+                <td>{{locationInModal.id}}</td>
+              </tr>
+              <tr>
+                <th>Country</th>
+                <td>{{locationInModal.country}}</td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td>{{locationInModal.city}}</td>
+              </tr>
+              <tr>
+                <th>Street</th>
+                <td>{{locationInModal.street}}</td>
+              </tr>
+            </table>
+            <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
+
+
         </div>
       </div>
-      
-      
-      </body>
- 
-      
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-
-<script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-
-  createApp({
-    data() {
-      return {
-        locationInModal:{},
-        locations:[]
-      }
-    },
-      async created(){
-          this.locations= await (await fetch('http://localhost:8088/locations')).json();
-      
-    },
-    methods: {
-        getLocation: async function (id) {
-            this.locationInModal = await (await fetch (`http://localhost:8088/locations/${id}`)).json()
-            console.log(this.locationInModal);
-            const  locationInfoModal = new bootstrap.Modal(document.getElementById('locationInfoModal'),{})
-            locationInfoModal.show()
-        }
-    }
-  }).mount('#app')
-</script>
-
-</script>
-</body>
-</html>
+    </div>
+  </div>

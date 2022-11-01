@@ -31,8 +31,13 @@ const { log } = require('console');
 };*/
 
 exports.locationsPage = (req, res) => {
-
-  res.render('location');
+  var locals ={
+    title: "Locations",
+    description: "Page Description",
+    header: "Page Header",
+    greeting: "awdua"
+  };
+  res.render('location', locals);
 }
 
 
@@ -44,7 +49,13 @@ exports.locationsPage = (req, res) => {
   }*/
 
 exports.actorsPage = (req, res) => {
-  res.render('actor');
+  var locals ={
+    title: "Actors",
+    description: "Page Description",
+    header: "Page Header",
+    greeting: "awdua"
+  };
+  res.render('actor', locals);
 }
 
 
