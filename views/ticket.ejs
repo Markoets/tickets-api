@@ -33,8 +33,8 @@
             <th>Film cast </th>
             <th>Film price </th>
         </tr>
-        <tr v-for="ticket in tickets">
-            <td @click="getTicket(ticket._id)" class="ticketname">{{ticket.name}}</td>
+        <tr v-for="ticket in locations">
+            <td @click="getLocation(ticket._id)">{{ticket.name}}</td>
             <td class="ticketcast">{{ticket.cast}}</td>
             <td class="ticketprice ">{{ticket.price}}</td>
             <td>
@@ -59,19 +59,19 @@
           <table>
         <tr>
             <th>ID</th>
-            <td>{{ticketInModal.id}}</td>
+            <td>{{InModal.id}}</td>
         </tr>
         <tr>
           <th>NAME</th>
-          <td>{{ticketInModal.name}}</td>
+          <td>{{InModal.name}}</td>
         </tr>
         <tr>
            <th>CAST</th>
-            <td>{{ticketInModal.cast}}</td>
+            <td>{{InModal.cast}}</td>
         </tr>
         <tr>
             <th>PRICE</th>
-            <td>{{ticketInModal.price}}</td>
+            <td>{{InModal.price}}</td>
         </tr>
     </table>
     <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

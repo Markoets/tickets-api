@@ -33,8 +33,8 @@
       <th>Actor gender </th>
       <th>Actor age </th>
     </tr>
-    <tr v-for="actor in actors">
-      <td @click="getActor(actor._id)">{{actor.name}}</td>
+    <tr v-for="actor in locations">
+      <td @click="getLocation(actor._id)">{{actor.name}}</td>
       <td>{{actor.gender}}</td>
       <td>{{actor.age}}</td>
     </tr>
@@ -54,19 +54,19 @@
           <table>
             <tr>
               <th>ID</th>
-              <td>{{actorInModal.id}}</td>
+              <td>{{InModal.id}}</td>
             </tr>
             <tr>
               <th>name</th>
-              <td>{{actorInModal.name}}</td>
+              <td>{{InModal.name}}</td>
             </tr>
             <tr>
               <th>gender</th>
-              <td>{{actorInModal.gender}}</td>
+              <td>{{InModal.gender}}</td>
             </tr>
             <tr>
               <th>age</th>
-              <td>{{actorInModal.age}}</td>
+              <td>{{InModal.age}}</td>
             </tr>
           </table>
           <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

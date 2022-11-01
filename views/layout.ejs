@@ -35,7 +35,7 @@
       data() {
         return {
           token:"",
-          locationInModal:{},
+          InModal:{},
           locations:[]
         }
       },
@@ -43,16 +43,16 @@
           console.log("tickets");
           const url = window.location.href
           console.log(url+'s');
-            this.locations= await (await fetch('http://localhost:8088/locations')).json();
+            this.locations= await (await fetch(`${url}s`)).json();
         
       },
       methods: {
           getLocation: async function (id) {
-              this.locationInModal = await (await fetch (`http://localhost:8088/locations/${id}`)).json()
-              console.log(this.locationInModal);
+              this.InModal = await (await fetch (`${url}s/${id}`)).json()
+              console.log(this.InModal);
               console.log('/${id}');
-              const  locationInfoModal = new bootstrap.Modal(document.getElementById('locationInfoModal'),{})
-              locationInfoModal.show()
+              const  InfoModal = new bootstrap.Modal(document.getElementById('locationInfoModal'),{})
+              InfoModal.show()
           },
           deleteItem: async function(location) {
     let requestOptions = {
