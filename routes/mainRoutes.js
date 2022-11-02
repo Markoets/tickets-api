@@ -22,18 +22,17 @@ const router = express.Router();
    /* app.route("/ticketsadd")
     .get(mainController.addTickets)*/
 
+  app.route("/logout")
+    .get(mainController.logout_get)
 
-   app.route("/logout")
-   .get(mainController.logout_get)
 
+  app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd', { title: "Login" }));
 
-   app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd',{title:"Login"}));
+  app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd', { title: "Login" }));
 
-   app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd',{title:"Login"}));
+  app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Login" }));
 
-   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd',{title:"Login"}));
-   
-   app.get('/admin', requireAuth, (req, res) => res.render('admin',{title:"Login"}));
+  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title: "Login" }));
 
  }
 
