@@ -3,19 +3,21 @@ const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
 const express = require("express");
 const router = express.Router();
  module.exports = function (app) {
- app.get('/ticket', function(req, res) {
-    res.render('ticket',{title:'Express'});
+ app.get('/ticket',checkUser, function(req, res) {
+    res.render('ticket',{title:'Movies'});
   });
 
-  app.get('/', function(req, res) {
+  app.get('/',checkUser, function(req, res) {
+
     res.render('index',{title:'Home'});
   });
 
-    app.route("/location")
-    .get(mainController.locationsPage)
+  app.get('/location',checkUser, function(req, res) {
+    res.render('location',{title:'Locations'});
+  });
 
-    app.get('/actor', function(req, res) {
-      res.render('actor',{title:'Express'});
+    app.get('/actor', checkUser,function(req, res) {
+      res.render('actor',{title:'Acotrs'});
     });
    /* app.route("/ticketsadd")
     .get(mainController.addTickets)*/
@@ -34,3 +36,5 @@ const router = express.Router();
    app.get('/admin', requireAuth, (req, res) => res.render('admin',{title:"Login"}));
 
  }
+
+ 

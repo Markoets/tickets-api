@@ -40,7 +40,15 @@
                     <a class="nav-link" href="actor"><i class="fas fa-user"></i> Actors</a>
                 </li>
             </ul>
-            <a class="nav-button" href="admin"><i class="fas fa-sign-in-alt"></i> Login</a>
+ 
+              
+                <% if(!locals.user){ %>
+                    <a class="nav-button" href="login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                  <% } else{ %>  
+                    <a  class="nav-button" href="logout"><i class="fas fa-sign-in-alt"></i> Logout</a>
+                 <% } %>
+ 
+            
         </div>
     </nav>
 </head>
