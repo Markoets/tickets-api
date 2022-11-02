@@ -52,6 +52,7 @@
           },
           methods: {
             getLocation: async function (id) {
+              const url = window.location.href
               this.InModal = await (await fetch(`${url}s/${id}`)).json()
               console.log(this.InModal);
               console.log('/${id}');
