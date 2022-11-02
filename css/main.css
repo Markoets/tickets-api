@@ -9,7 +9,7 @@ body {
 /* begin navbar */
 
 nav {
-    background: rgb(64, 26, 130);
+    background: #401a82;
     background: linear-gradient(90deg, rgba(64, 26, 130, 1) 0%, rgba(201, 0, 135, 1) 100%);
 }
 
@@ -24,6 +24,22 @@ nav {
 .nav-item a i {
     margin-right: 5px
 }
+
+.ticketsTable {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 800px;
+  
+  }
+
+  .carousel-item img{
+    height: 75vh;
+    object-fit: cover;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
 
 .nav-item a:hover {
     color: #fb32b9;
