@@ -24,23 +24,6 @@ nav {
 .nav-item a i {
     margin-right: 5px
 }
-
-.ticketsTable {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 800px;
-  
-  }
-
-  .carousel-item img{
-    height: 75vh;
-    object-fit: cover;
-    margin: 0 auto;
-    padding-bottom: 2rem;
-  }
-
-
 .nav-item a:hover {
     color: #fb32b9;
 }
@@ -69,6 +52,29 @@ nav {
     background: purple;
 }
 /* end navbar */
+
+
+.ticketsTable {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 800px;
+    color: #ebebeb;
+    background-color: #000000cc;
+  
+  }
+
+  .carousel-item img{
+    height: 75vh;
+    object-fit: cover;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+
+
+
+  
 
 /* start main */
 

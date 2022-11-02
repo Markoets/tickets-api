@@ -1,19 +1,21 @@
-
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="cinema1.jpg" class="d-block w-20" alt="...">
+      <img src="cinema1.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="cinema2.jpg" class="d-block w-20" alt="...">
+      <img src="cinema2.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="cinema3.jpg" class="d-block w-20" alt="...">
+      <img src="cinema3.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -26,54 +28,54 @@
   </button>
 </div>
 
-  <div id="app">
-    <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
-      <tr>
-        <th>Country name</th>
-        <th>City name </th>
-        <th>Street name </th>
-      </tr>
-      <tr v-for="location in locations">
-        <td @click="getLocation(location._id)">{{location.country}}</td>
-        <td>{{location.city}}</td>
-        <td>{{location.street}}</td>
-      </tr>
-    </table>
+<div id="app">
+  <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
+    <tr>
+      <th>Country name</th>
+      <th>City name </th>
+      <th>Street name </th>
+    </tr>
+    <tr v-for="location in locations">
+      <td @click="getLocation(location._id)">{{location.country}}</td>
+      <td>{{location.city}}</td>
+      <td>{{location.street}}</td>
+    </tr>
+  </table>
 
 
-    <div class="locationsmodal modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false"
-      tabindex="-1" aria-labelledby="locationInfoModal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header ">
-            <h5 class="modal-title">Film details<h5>
-                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                </button>
-          </div>
-          <div class="modal-body locationModal">
-            <table>
-              <tr>
-                <th>ID</th>
-                <td>{{InModal.id}}</td>
-              </tr>
-              <tr>
-                <th>Country</th>
-                <td>{{InModal.country}}</td>
-              </tr>
-              <tr>
-                <th>City</th>
-                <td>{{InModal.city}}</td>
-              </tr>
-              <tr>
-                <th>Street</th>
-                <td>{{InModal.street}}</td>
-              </tr>
-            </table>
-            <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-
-
+  <div class="locationsmodal modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false"
+    tabindex="-1" aria-labelledby="locationInfoModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title">Film details<h5>
+              <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+              </button>
         </div>
+        <div class="modal-body locationModal">
+          <table>
+            <tr>
+              <th>ID</th>
+              <td>{{InModal.id}}</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>{{InModal.country}}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{{InModal.city}}</td>
+            </tr>
+            <tr>
+              <th>Street</th>
+              <td>{{InModal.street}}</td>
+            </tr>
+          </table>
+          <button type="button bg-dark" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+
       </div>
     </div>
   </div>
+</div>
