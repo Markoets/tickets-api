@@ -35,7 +35,7 @@
       <th>Actor gender </th>
       <th>Actor age </th>
     </tr>
-    <tr v-for="actor in locations">
+    <tr v-for="actor in actors">
       <td @click="getLocation(actor._id)">{{actor.name}}</td>
       <td>{{actor.gender}}</td>
       <td>{{actor.age}}</td>

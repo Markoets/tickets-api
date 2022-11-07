@@ -33,8 +33,9 @@
     <th>Film name</th>
     <th>Film cast </th>
     <th>Film price </th>
+    <th>delete </th>
   </tr>
-  <tr v-for="ticket in locations">
+  <tr v-for="ticket in tickets">
     <td @click="getLocation(ticket._id)">{{ticket.name}}</td>
     <td class="ticketcast">{{ticket.cast}}</td>
     <td class="ticketprice ">{{ticket.price}}</td>
@@ -43,6 +44,7 @@
         <button type='submit' class="nupp">Delete</button>
       </form>
     </td>
+
   </tr>
 
 </table>

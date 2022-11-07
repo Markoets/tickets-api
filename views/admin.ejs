@@ -87,7 +87,11 @@
                         <use xlink:href='./icons.svg#icon-package'></use>
                     </svg>
                     <div class="number">
-                        <h4>5</h4>
+                        <tr v-for="ticket in tickets">
+                            <td>
+                              {{tickets.length }}
+                            </td>
+                          </tr>
                     </div>
                 </span>
             </div>
@@ -100,7 +104,11 @@
                         <use xlink:href='./icons.svg#icon-user'></use>
                     </svg>
                     <div class="number">
-                        <h4>5</h4>
+                        <tr v-for="actor in actors">
+                            <td>
+                              {{actors.length }}
+                            </td>
+                          </tr>
                     </div>
                 </span>
             </div>
@@ -113,7 +121,11 @@
                         <use xlink:href='./icons.svg#icon-briefcase'></use>
                     </svg>
                     <div class="number">
-                        <h4>5</h4>
+                        <tr v-for="location in locations2">
+                            <td>
+                              {{locations2.length }}
+                            </td>
+                          </tr>
                     </div>
                 </span>
             </div>
@@ -260,7 +272,8 @@
                 </form>
             </section>
 
-            <script src="app.js"></script>
+         
 </body>
 
 </html>
+

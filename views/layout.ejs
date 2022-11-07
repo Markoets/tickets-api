@@ -12,10 +12,11 @@
 </head>
 
 <body>
+  <div id="app">
   <header>
     <%- include('./partials/mainHeader.ejs') %>
   </header>
-  <div id="app">
+  
     <%- body %>
   </div>
   <footer>
@@ -40,15 +41,20 @@
             return {
               token: "",
               InModal: {},
-              locations: []
+              locations: [],
+              actors: [],
+              locations2:[],
+              tickets:[]
             }
           },
           async created() {
             console.log("tickets");
             const url = window.location.href
             console.log(url + 's');
-            this.locations = await (await fetch(`${url}s`)).json();
-
+          //  this.locations = await (await fetch(`${url}s`)).json();
+            this.locations2 = await (await fetch(`http://localhost:8088/locations`)).json();
+            this.actors = await (await fetch(`http://localhost:8088/actors`)).json();
+            this.tickets = await (await fetch(`http://localhost:8088/tickets`)).json();
           },
           methods: {
             getLocation: async function (id) {

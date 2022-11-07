@@ -17,7 +17,7 @@ const router = express.Router();
   });
 
     app.get('/actor', checkUser,function(req, res) {
-      res.render('actor',{title:'Acotrs'});
+      res.render('actor',{title:'Actors'});
     });
    /* app.route("/ticketsadd")
     .get(mainController.addTickets)*/
@@ -34,6 +34,7 @@ const router = express.Router();
 
   app.get('/admin', requireAuth, (req, res) => res.render('admin', { title: "Login" }));
 
+  
  }
 
  
