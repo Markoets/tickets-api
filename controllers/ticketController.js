@@ -23,7 +23,7 @@ exports.createNew = (req, res) => {
         if (err) {
             res.render("ticketsAdd",{title:"Error"})
         } else {
-            res.render("admin",{title:`${getBaseUrl(req)}/tickets/${ticket.id}`})
+            res.redirect('admin',201)
         }
     })
 }
