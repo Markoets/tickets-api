@@ -28,19 +28,32 @@
   </button>
 </div>
 
-<div id="app">
-  <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
-    <tr>
-      <th>Country name</th>
-      <th>City name </th>
-      <th>Street name </th>
-    </tr>
-    <tr v-for="location in locations2">
-      <td @click="getLocation(location._id)">{{location.country}}</td>
-      <td>{{location.city}}</td>
-      <td>{{location.street}}</td>
-    </tr>
-  </table>
+
+
+  <div v-for="location in locations2">
+    <div class="container col-sm-6 col-xs-6 ">
+                    <div class="list mb-2 ">
+                        <div class="list-header">
+                            <a class="list-header-image">
+                                <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg">
+                            </a>
+                        </div>
+                        <div class="list-content">
+                            <h2><a class="text-black" @click="getLocation(location._id)">{{location.country}}</a></h2>
+                            <span class="list-meta">
+                                <span class="list-meta-item"><i class="fas fa-euro-sign ticketprice"></i>  City {{location.city}}</span>
+                              
+                            </span>
+                            <p class="ticketcast">Street: {{location.street}}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+    
+    
+
+
+  
 
 
   <div class="locationsmodal modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false"

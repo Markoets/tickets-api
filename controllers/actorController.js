@@ -21,11 +21,9 @@ exports.createNew = (req, res) => {
     const new_actor = new Actor(req.body)
     new_actor.save((err, actor) => {
         if (err) {
-            res.status(400).send(err)
+            res.render("actorsAdd",{title:"Error"})
         } else {
-            res.status(201)
-            .location(`${getBaseUrl(req)}/actors/${actor.id}`)
-            .json(actor)
+            res.render("admin",{title:`${getBaseUrl(req)}/actors/${actor.id}`})
         }
     })
 }

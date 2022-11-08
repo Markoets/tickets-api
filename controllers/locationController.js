@@ -22,11 +22,9 @@ exports.createNew = (req, res) => {
     const new_location = new Location(req.body)
     new_location.save((err, location) => {
         if (err) {
-            res.status(400).send(err)
+            res.render("locationsAdd",{title:"Error"})
         } else {
-            res.status(201)
-            .location(`${getBaseUrl(req)}/locations/${location.id}`)
-            .json(location)
+            res.render("admin",{title:`${getBaseUrl(req)}/locations/${location.id}`})
         }
     })
 }

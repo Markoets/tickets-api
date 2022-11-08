@@ -28,26 +28,38 @@
   </button>
 </div>
 
-<table id="ticketsTable" class="moviestable table-striped table-bordered ticketsTable">
-  <tr>
-    <th>Film name</th>
-    <th>Film cast </th>
-    <th>Film price </th>
-    <th>delete </th>
-  </tr>
-  <tr v-for="ticket in tickets">
-    <td @click="getLocation(ticket._id)">{{ticket.name}}</td>
-    <td class="ticketcast">{{ticket.cast}}</td>
-    <td class="ticketprice ">{{ticket.price}}</td>
-    <td>
-      <form :action="`tickets/delete/${ticket._id}`" method="post">
-        <button type='submit' class="nupp">Delete</button>
-      </form>
-    </td>
 
-  </tr>
 
-</table>
+
+
+
+
+
+<div v-for="ticket in tickets">
+<div class="container col-sm-6 col-xs-6 ">
+                <div class="list mb-2 ">
+                    <div class="list-header">
+                        <a class="list-header-image">
+                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg">
+                        </a>
+                    </div>
+                    <div class="list-content">
+                        <h2><a class="text-black" @click="getLocation(ticket._id)">{{ticket.name}}</a></h2>
+                        <span class="list-meta">
+                            <span class="list-meta-item"><i class="fas fa-euro-sign ticketprice"></i>  Price {{ticket.price}}</span>
+                          
+                        </span>
+                        <p class="ticketcast">Cast: {{ticket.cast}}</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+          
+ 
+
+
 
 
 <div class="modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"

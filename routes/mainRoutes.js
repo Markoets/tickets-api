@@ -26,13 +26,13 @@ const router = express.Router();
     .get(mainController.logout_get)
 
 
-  app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd', { title: "Login" }));
+  app.get('/ticketsAdd', requireAuth, (req, res) => res.render('ticketsAdd', { title: "Add tickets" }));
 
-  app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd', { title: "Login" }));
+  app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd', { title: "Add actors" }));
 
-  app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Login" }));
+  app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Add locations" }));
 
-  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title: "Login" }));
+  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title: "Admin" }));
 
   
  }

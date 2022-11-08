@@ -28,19 +28,32 @@
   </button>
 </div>
 
-<div id="app">
-  <table id="actorsTable" class="moviestable table-striped table-bordered ticketsTable ">
-    <tr>
-      <th>Actor name</th>
-      <th>Actor gender </th>
-      <th>Actor age </th>
-    </tr>
-    <tr v-for="actor in actors">
-      <td @click="getLocation(actor._id)">{{actor.name}}</td>
-      <td>{{actor.gender}}</td>
-      <td>{{actor.age}}</td>
-    </tr>
-  </table>
+
+
+
+
+
+  <div v-for="actor in actors">
+    <div class="container col-sm-6 col-xs-6 ">
+                    <div class="list mb-2 ">
+                        <div class="list-header">
+                            <a class="list-header-image">
+                                <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg">
+                            </a>
+                        </div>
+                        <div class="list-content">
+                            <h2><a class="text-black" @click="getLocation(actor._id)">{{actor.name}}</a></h2>
+                            <span class="list-meta">
+                                <span class="list-meta-item"><i class="fas fa-euro-sign ticketprice"></i>  Gender {{actor.gender}}</span>
+                              
+                            </span>
+                            <p class="ticketcast">Age: {{actor.age}}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+    
+    
 
 
   <div class="modal fade modal-sm " id="locationInfoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"

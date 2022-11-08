@@ -21,14 +21,13 @@ exports.createNew = (req, res) => {
     const new_ticket = new Ticket(req.body)
     new_ticket.save((err, ticket) => {
         if (err) {
-            res.status(400).send(err)
+            res.render("ticketsAdd",{title:"Error"})
         } else {
-            res.status(201)
-            .location(`${getBaseUrl(req)}/tickets/${ticket.id}`)
-            .json(ticket)
+            res.render("admin",{title:`${getBaseUrl(req)}/tickets/${ticket.id}`})
         }
     })
 }
+
 exports.getById = async function (req, res) {    //Read
     
     if (!(parseInt(req.params.id) > 0)) {
