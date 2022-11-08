@@ -48,10 +48,29 @@ nav {
     transition: all 0.4s;
 }
 
+
+.nav-button2 {
+    border-radius: 2px;
+    background: #fff;
+    padding: 5px 10px 5px;
+    color: #fb32b9;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.4s;
+}
+
+.nav-button2:hover {
+    background: #fb32b9;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s;
+}
+
 .nav-item .dropdown-menu {
     background: purple;
 }
 /* end navbar */
+
+
 
 
 .ticketsTable {
@@ -62,6 +81,9 @@ nav {
     color: #ebebeb;
     background-color: #000000cc;
   
+  }
+  .nav-button{
+   margin-left:1350px;
   }
 
   .carousel-item img{
