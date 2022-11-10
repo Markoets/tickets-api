@@ -32,9 +32,10 @@ const router = express.Router();
   app.get('/actorsAdd', requireAuth, (req, res) => res.render('actorsAdd', { title: "Add actors" }));
 
   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Add locations" }));
-
+  
   app.get('/admin', requireAuth, (req, res) => res.render('admin', { title:ticket2 }));
 
+  ticket2='Admin'
   
  }
 
