@@ -24,7 +24,10 @@ exports.createNew = (req, res) => {
         if (err) {
             res.render("locationsAdd",{title:"Error"})
         } else {
-            res.render("admin",{title:`${getBaseUrl(req)}/locations/${location.id}`})
+            ticket2=`Added a new location at:  ${getBaseUrl(req)}/locations/${location.id}`
+            console.log(ticket2+'aaa');
+            console.log(`${getBaseUrl(req)}/locations/${location.id}`);
+            res.redirect('admin')
         }
     })
 }

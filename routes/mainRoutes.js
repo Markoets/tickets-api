@@ -1,6 +1,7 @@
 const mainController = require("../controllers/mainController")
 const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
 const express = require("express");
+const { createNew} = require('../controllers/ticketController');
 const router = express.Router();
  module.exports = function (app) {
  app.get('/ticket',checkUser, function(req, res) {
@@ -32,7 +33,7 @@ const router = express.Router();
 
   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Add locations" }));
 
-  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title: "Admin" }));
+  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title:ticket2 }));
 
   
  }

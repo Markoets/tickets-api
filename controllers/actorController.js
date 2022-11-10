@@ -23,7 +23,9 @@ exports.createNew = (req, res) => {
         if (err) {
             res.render("actorsAdd",{title:"Error"})
         } else {
-            res.render("admin",{title:`${getBaseUrl(req)}/actors/${actor.id}`})
+            ticket2=`Added a new actor at:   ${getBaseUrl(req)}/actors/${actor.id}`
+            console.log(`${getBaseUrl(req)}/actors/${actor.id}`);
+            res.redirect('admin')
         }
     })
 }
