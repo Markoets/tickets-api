@@ -14,6 +14,10 @@ const ActorSchema = new Schema({
     age: {
         type: Number,
         required: "Age of the actor is mandatory"
+    },
+    image: {
+        type: String,
+        required: "Image is mandatory"
     }
 })
 

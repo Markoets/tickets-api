@@ -14,6 +14,10 @@ const TicketSchema = new Schema({
     price: {
         type: Number,
         required: "Price is mandatory"
+    },
+    image: {
+        type: String,
+        required: "Image is mandatory"
     }
 })
 

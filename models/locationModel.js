@@ -14,6 +14,11 @@ const LocationSchema = new Schema({
     street: {
         type: String,
         required: "Street name is mandatory"
+    },
+
+    image: {
+        type: String,
+        required: "Image is mandatory"
     }
 })
 
