@@ -14,3 +14,26 @@ npm i
 npm start
 
 After that go to localhost:8088 to see all the tickets and localhost:8088/docs to see the tickets api documentation.
+
+Instruction for not logged in user:
+
+Go to localhost:8088 to browse different movies
+
+Go to localhost:8088/ticket or click the movies button on the header to show all the movies. Click on the name of the movie to show more details about it.
+
+Go to localhost:8088/location or click the locations button on the header to show all the locations. Click on the name of the location to show more details about it.
+
+Go to localhost:8088/actor or click the actors button on the header to show all the actors. Click on the name of the actor to show more details about it.
+
+Instruction for logged in user:
+
+Go to localhost:8088/admin or click the admin button on the header to render the admin page
+
+Click on tickets to add more tickets
+
+Click on locations to add more locations
+
+Click on actors to add more actors
+
+Instruction for administrator:
+To deploy the project remove all the console logs, add .env to .gitignore and disable or update the seeding.
