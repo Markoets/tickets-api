@@ -1,0 +1,25 @@
+
+<% if(locals.user.role=='admin'){ %>
+
+    <div id="app">
+        <table id="locationsTable" class="moviestable table-striped table-bordered ticketsTable ">
+          <tr>
+            <th>Country name</th>
+            <th>City name </th>
+            <th>Street name </th>
+          </tr>
+          <tr v-for="location in locations2">
+            <td @click="getLocation(location._id)">{{location.country}}</td>
+            <td>{{location.city}}</td>
+            <td>{{location.street}}</td>
+        
+          <td>
+            <form :action="`locations/delete/${location._id}`" method="post">
+              <button type='submit' class="nupp">Delete</button>
+            </form>
+          </td>
+        </tr>
+        </table>
+    <% } else{ %>  
+      <p>ei ole admin</p>
+   <% } %>

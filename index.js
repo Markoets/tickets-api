@@ -132,8 +132,19 @@ seedDB();
 
 app.post('/tickets/delete/:id', async (req, res) => {
     await Ticket.deleteOne({_id: req.params.id})
-    return res.redirect('/')
+    return res.redirect('/admin')
   });
+  
+  app.post('/actors/delete/:id', async (req, res) => {
+    await Actor.deleteOne({_id: req.params.id})
+    return res.redirect('/admin')
+  });
+  
+  app.post('/locations/delete/:id', async (req, res) => {
+    await Location.deleteOne({_id: req.params.id})
+    return res.redirect('/admin')
+  });
+  
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 

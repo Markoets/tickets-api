@@ -1,15 +1,16 @@
 const mainController = require("../controllers/mainController")
-const { requireAuth, checkUser } = require('../middleware/auth.Middleware');
+const { requireAuth, checkUser,checkAdmin } = require('../middleware/auth.Middleware');
 const express = require("express");
 const { createNew} = require('../controllers/ticketController');
 const router = express.Router();
+const { user,role} = require('../controllers/loginController');
  module.exports = function (app) {
  app.get('/ticket',checkUser, function(req, res) {
     res.render('ticket',{title:'Movies'});
   });
 
   app.get('/',checkUser, function(req, res) {
-
+    console.log(user);
     res.render('index',{title:'Home'});
   });
 
@@ -33,7 +34,19 @@ const router = express.Router();
 
   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Add locations" }));
   
-  app.get('/admin', requireAuth, (req, res) => res.render('admin', { title:ticket2 }));
+  app.get('/admin', requireAuth, (req, res) =>
+   res.render('admin', { title:ticket2 }));
+
+
+    // (role=='admin')?app.get('/ticketsDelete',  (req, res) => res.render('ticketsDelete', { title: "Add locations" }))
+    // :app.get('/',  (req, res) => res.render('index', { title: "Add locations" }))
+  
+
+    app.get('/ticketsDelete', requireAuth, (req, res) => res.render('ticketsDelete', { title: "Delete tickets" }));
+
+    app.get('/actorsDelete', requireAuth, (req, res) => res.render('actorsDelete', { title: "Delete actors" }));
+
+    app.get('/locationsDelete', requireAuth, (req, res) => res.render('locationsDelete', { title: "Delete locations" }));
 
   ticket2='Admin'
   

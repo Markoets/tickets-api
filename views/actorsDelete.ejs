@@ -1,0 +1,25 @@
+
+<% if(locals.user.role=='admin'){ %>
+
+    <div id="app">
+        <table id="actorsTable" class="moviestable table-striped table-bordered ticketsTable ">
+          <tr>
+            <th>Actor name</th>
+            <th>Actor gender </th>
+            <th>Actor age </th>
+          </tr>
+          <tr v-for="actor in actors">
+            <td @click="getLocation(actor._id)">{{actor.name}}</td>
+            <td>{{actor.gender}}</td>
+            <td>{{actor.age}}</td>
+        
+          <td>
+            <form :action="`actors/delete/${actor._id}`" method="post">
+              <button type='submit' class="nupp">Delete</button>
+            </form>
+          </td>
+        </tr>
+        </table>
+    <% } else{ %>  
+      <p>ei ole admin</p>
+   <% } %>
