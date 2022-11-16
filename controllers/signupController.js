@@ -53,7 +53,7 @@ exports.signupPage=(req, res) => {
   
   // Handling post request
   exports.signupInfo = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password,role } = req.body;
 
     let user = await User.findOne({ email});
 
@@ -64,8 +64,9 @@ exports.signupPage=(req, res) => {
   }
   
   else {
-    const user = await User.create({ email, password });
+    const user = await User.create({ email, password,role });
     const token = createToken(user._id);
+    console.log(role);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.redirect("login")
   }

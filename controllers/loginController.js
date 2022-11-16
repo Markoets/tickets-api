@@ -49,11 +49,13 @@ const createToken = (id) => {
 };
 exports.loginInfo = async (req, res, next) => {
  
-  const { email, password } = req.body;
+  const { email, password,role } = req.body;
 
   try {
-    const user = await User.login(email, password);
+    const user = await User.login(email, password,role);
+    console.log(user);
     const token = createToken(user._id);
+ 
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
    res.redirect("admin")
   } 

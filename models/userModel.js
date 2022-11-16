@@ -10,7 +10,14 @@ const UserSchema = new Schema ({
     password:{
         type:String,
         required:"Password is mandatory"
-    }
+    },
+    role:{
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'user'
+    },
+  
+    
 })
  
 UserSchema.pre('save', async function(next){
