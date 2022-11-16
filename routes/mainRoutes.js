@@ -48,8 +48,16 @@ const { user,role} = require('../controllers/loginController');
 
     app.get('/locationsDelete', requireAuth, (req, res) => res.render('locationsDelete', { title: "Delete locations" }));
 
+   
   ticket2='Admin'
   
- }
+  var User = require('../models/userModel'); //the connection to users database
+app.get('/users', function (req, res) {
+    User.find({}).exec(function(err, users) {   
+        if (err) throw err;
+        res.render('users.ejs', { "users": users ,title:'tere'});
+    }
 
- 
+    )}
+
+)}
