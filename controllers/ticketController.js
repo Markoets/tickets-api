@@ -47,6 +47,7 @@ exports.getById = async function (req, res) {    //Read
     return
 }
 exports.editById = function (req, res) {     //Update
+    const { name, cast,price } = req.body;
     if (!(parseInt(req.params.id) > 0)) {
         res.status(400).send({ error: "ID must be a positive integer" })
         return
