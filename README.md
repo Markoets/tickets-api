@@ -35,5 +35,13 @@ Click on locations to add more locations
 
 Click on actors to add more actors
 
+Instructions for logged in admin:
+
+Click on Delete tickets to delete tickets or to update them
+
+Click on Delete actors to delete actors or to update them
+
+Click on Delete locations to delete locations or to update them
+
 Instruction for administrator:
 To deploy the project remove all the console logs, add .env to .gitignore and disable or update the seeding.
