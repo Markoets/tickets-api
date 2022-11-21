@@ -6,8 +6,7 @@
           <th>Film name</th>
           <th>Film cast </th>
           <th>Film price </th>
-          <!-- <th>delete </th> -->
-          <th>update </th>
+         <th>Image link</th>
         </tr>
         
         <tr v-for="ticket in tickets">
@@ -30,6 +29,13 @@
           <td>
             <div class="control-group">
               <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.price" type="number" name="price" required
+                 style="width: 306px;">
+                </div>
+            </div>
+          </td>
+          <td>
+            <div class="control-group">
+              <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.image" type="name" name="image" required
                  style="width: 306px;">
                 </div>
             </div>

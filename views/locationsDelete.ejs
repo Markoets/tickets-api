@@ -7,6 +7,7 @@
             <th>Country name</th>
             <th>City name </th>
             <th>Street name </th>
+            <th>Image link</th>
           </tr>
           <tr v-for="location in locations2">
             <td>
@@ -30,6 +31,13 @@
                 </div>
             </div>
           </td>
+          <td>
+            <div class="control-group">
+              <div class="mb-0 form-floating controls pb-2"><input :form="`update${locations._id}`" :value="location.image" type="name" name="image" required
+                 style="width: 306px;">
+                </div>
+            </div>
+          </td>
       <td>
         <form :action="`locations/delete/${location._id}`" method="post">
           <button type='submit' class="nupp">Delete</button>
@@ -43,6 +51,7 @@
             </div>
 
           </td>
+
 
       
         </td> 
