@@ -55,7 +55,7 @@ exports.editById = function (req, res) {     //Update
         if (err) {
             res.status(400).send(err)
         } else {
-            console.log(actor);
+            console.log(actor,req.body);
             res.status(200).json(actor)
         }
     })

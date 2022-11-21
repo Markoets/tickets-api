@@ -7,7 +7,10 @@ module.exports = function (app) {
 
     app.route("/locations/:id")
         .get(locationsList.getById)     //Read
-        .put(locationsList.editById)    //Update
+       // .put(locationsList.editById)    //Update
         .delete(locationsList.deleteById) //Delete
+
+        app.route("/locations/update/:id")
+        .post(locationsList.editById)
 
 }

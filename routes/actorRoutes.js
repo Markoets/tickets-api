@@ -7,7 +7,11 @@ module.exports = function (app) {
 
     app.route("/actors/:id")
         .get(actorsList.getById)     //Read
-        .put(actorsList.editById)    //Update
+        //.put(actorsList.editById)    //Update
         .delete(actorsList.deleteById) //Delete
+
+        
+        app.route("/actors/update/:id")
+        .post(actorsList.editById)
 
 }

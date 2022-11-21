@@ -9,15 +9,43 @@
             <th>Street name </th>
           </tr>
           <tr v-for="location in locations2">
-            <td @click="getLocation(location._id)">{{location.country}}</td>
-            <td>{{location.city}}</td>
-            <td>{{location.street}}</td>
-        
+            <td>
+              <div class="control-group">
+                <div class="mb-0 form-floating controls pb-2"><input :form="`update${location._id}`" :value="location.country" type="name" name="country" required
+                   style="width: 306px;">
+                  </div>
+              </div>
+            </td>
           <td>
-            <form :action="`locations/delete/${location._id}`" method="post">
-              <button type='submit' class="nupp">Delete</button>
-            </form>
+            <div class="control-group">
+              <div class="mb-0 form-floating controls pb-2"><input :form="`update${location._id}`" :value="location.city" type="name" name="city" required
+                 style="width: 306px;">
+                </div>
+            </div>
           </td>
+          <td>
+            <div class="control-group">
+              <div class="mb-0 form-floating controls pb-2"><input :form="`update${location._id}`" :value="location.street" type="name" name="street" required
+                 style="width: 306px;">
+                </div>
+            </div>
+          </td>
+      <td>
+        <form :action="`locations/delete/${location._id}`" method="post">
+          <button type='submit' class="nupp">Delete</button>
+        </form>
+
+            <div id="success"></div>
+            <div>
+              <form :action="`locations/update/${location._id}`" method="POST" :id="`update${location._id}`">
+                <button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit"
+                style="width: 306px;">Update</button>    </form>
+            </div>
+
+          </td>
+
+      
+        </td> 
         </tr>
         </table>
     <% } else{ %>  
