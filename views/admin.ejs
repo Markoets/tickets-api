@@ -56,6 +56,8 @@
                         <span>Locations</span>
                     </a>
                 </li>
+                
+<% if(locals.user.role=='admin'){ %>
                 <li class="locations">
                     <a href="/actorsDelete">
                         <svg>
@@ -77,12 +79,17 @@
                         <span>Delete Locations</span>
                     </a>
                 </li>
+                <li class="users">
+                    <a href="/users">
+                        <svg>
+                        </svg>
+                        <span>Users info</span>
+                    </a>
+                </li>
             </ul>
         </nav>
-
-        <footer class="footer">
-            <p>&copy; Test</p>
-        </footer>
+        <% } %>
+     
     </div>
 
     <!-- MAIN --->
