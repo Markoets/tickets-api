@@ -27,7 +27,7 @@
           </td>
           <td>
             <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="``" :value="ticket.price" type="number" name="price" required
+              <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.price" type="number" name="price" required
                  style="width: 306px;">
                 </div>
             </div>
