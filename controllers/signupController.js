@@ -51,18 +51,21 @@ const createToken = (id) => {
 
 
 exports.updateUser = async (req, res, next) => {
+
   const { id } = req.params;
   const { email, password, role } = req.body;
   const salt = await bcrypt.genSalt();
+  console.log({ email, password, role},id);
   const hashedPassword = await bcrypt.hash(password, salt)
+  console.log("siia j6uab");
   console.log(password, hashedPassword);
   try {
     const user = await User .findOne({ _id: id });
     user.email= email
-    user.password= hashedPassword
+    user.password= password
     user.role= role
     await user.save()
-    res.redirect("/users")
+    res.redirect("/admin")
   } catch (err) {
     console.log(err)
     res.status(400).send("unable to update the database");
