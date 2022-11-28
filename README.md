@@ -47,4 +47,4 @@ Click users info to update users email/role/password
 
 Instruction for administrator:
 
-To deploy the project remove all the console logs, add .env to .gitignore and disable or update the seeding. Remove the comment from seeding in index.js at line 84 and 131
+To deploy the project remove all the console logs, add .env to .gitignore and disable or update the seeding to remove the seeding remove comment in index.js at line 84 and 131

@@ -10,7 +10,6 @@ const { user,role} = require('../controllers/loginController');
   });
 
   app.get('/',checkUser, function(req, res) {
-    console.log(user);
     res.render('index',{title:'Home'});
   });
 
