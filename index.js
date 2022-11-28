@@ -81,7 +81,7 @@ function randomIntFromInterval(min, max) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-async function seedDB() {
+/*async function seedDB() {
     // Connection URL
     const uri = "mongodb://localhost:27017/ticketsApiDb";
 
@@ -128,7 +128,7 @@ async function seedDB() {
 }
 
 seedDB();
-
+*/
 
 app.post('/tickets/delete/:id', async (req, res) => {
     await Ticket.deleteOne({_id: req.params.id})
