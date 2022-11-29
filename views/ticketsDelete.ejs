@@ -1,63 +1,71 @@
-
-<% if(locals.user.role=='admin'){ %>
+<% if(locals.user.role=='admin' ){ %>
   <div id="app">
-    <table id="ticketsTable" class="moviestable table-striped table-bordered ticketsTable">
-        <tr>
-          <th>Film name</th>
-          <th>Film cast </th>
-          <th>Film price </th>
-          <th>Image link</th>
-        </tr>
-        <tr v-for="ticket in tickets">
+    <table cellspacing="0" cellpadding="0" id="ticketsTable" class="moviestable table-striped table-bordered ticketsTable">
+      <tr>
+        <th>Film name</th>
+        <th>Film cast </th>
+        <th>Film price </th>
+        <th>Image link</th>
+        <th>Actions</th>
+        <th></th>
+      </tr>
+      <tr v-for="ticket in tickets">
 
-         
-            <td>
-              <div class="control-group">
-                <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.name" type="name" name="name" required
-                   style="width: 306px;">
-                  </div>
-              </div>
-            </td>
+
+        <td>
+          <div class="main-div">
+            <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" :form="`update${ticket._id}`"
+                :value="ticket.name" type="name" name="name" required style="width: 306px;">
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="main-div">
+            <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" :form="`update${ticket._id}`"
+                :value="ticket.cast" type="name" name="cast" required style="width: 306px;">
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="main-div">
+            <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" :form="`update${ticket._id}`"
+                :value="ticket.price" type="number" name="price" required style="width: 306px;">
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="main-div">
+            <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" :form="`update${ticket._id}`"
+                :value="ticket.image" type="name" name="image" required style="width: 306px;">
+            </div>
+          </div>
+        </td>
+
+        <td>
+
+          <div>
+            <form :action="`tickets/delete/${ticket._id}`" method="post">
+              <button class="btn btn-primary " id="sendMessageButton" type="submit"
+                style="width: 306px;">Delete</button>
+            </form>
+          </div>
+        </td>
           <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.cast" type="name" name="cast" required
-                 style="width: 306px;">
-                </div>
-            </div>
-          </td>
-          <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.price" type="number" name="price" required
-                 style="width: 306px;">
-                </div>
-            </div>
-          </td>
-          <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${ticket._id}`" :value="ticket.image" type="name" name="image" required
-                 style="width: 306px;">
-                </div>
-            </div>
-          </td>
-      <td>
-        <form :action="`tickets/delete/${ticket._id}`" method="post">
-          <button type='submit' class="nupp">Delete</button>
-        </form>
+          <div id="success"></div>
+          <div>
+            <form :action="`tickets/update/${ticket._id}`" method="POST" :id="`update${ticket._id}`">
+              <button class="btn btn-primary " id="sendMessageButton" type="submit"
+                style="width: 306px;">Update</button>
+            </form>
+          </div>
 
-            <div id="success"></div>
-            <div>
-              <form :action="`tickets/update/${ticket._id}`" method="POST" :id="`update${ticket._id}`">
-                <button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit"
-                style="width: 306px;">Update</button>    </form>
-            </div>
+        </td>
 
-          </td>
 
-      
-        </td> 
-        </tr>
-      
-      </table>
-    <% } else{ %>  
+        </td>
+      </tr>
+
+    </table>
+    <% } else{ %>
       <p>Log in as admin to see this page</p>
-   <% } %>
+      <% } %>

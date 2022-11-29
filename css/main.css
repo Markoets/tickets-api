@@ -24,6 +24,7 @@ nav {
 .nav-item a i {
     margin-right: 5px
 }
+
 .nav-item a:hover {
     color: #fb32b9;
 }
@@ -68,6 +69,7 @@ nav {
 .nav-item .dropdown-menu {
     background: purple;
 }
+
 /* end navbar */
 
 
@@ -76,27 +78,73 @@ nav {
 .ticketsTable {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 50%);
     width: 800px;
-    color: #ebebeb;
-    background-color: #000000cc;
-  
-  }
-  .nav-button{
-   margin-left:1350px;
-  }
+    border: none;
+    border-spacing: 15px;
+}
 
-  .carousel-item img{
+.nav-button {
+    margin-left: 1350px;
+}
+
+.carousel-item img {
     height: 75vh;
     object-fit: cover;
     margin: 0 auto;
     padding-bottom: 2rem;
-  }
+}
+
+
+/* Delete Tickets */
+
+.main-div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-spacing: 15px;
+    
+}
+
+#second-div{
+    transform: translate(0, 70%);
+    border-spacing: 15px;
+}
+
+input {
+    background-color: white;
+    box-shadow: black;
+    padding: 5px;
+    margin: 5px;
+    color: black;
+    border: none;
+    border-spacing: 15px;
+    text-align: center;
+    
+}
+
+td {
+    background: linear-gradient(180deg, rgba(64, 26, 130, 1) 0%, rgba(201, 0, 135, 1) 100%);
+    border: none;
+    border-spacing: 15px;
+    
+}
+
+th {
+    background-color: black;
+    border: none;
+    border-spacing: 15px;
+    
+}
+
+table {
+    border: none;
+    color: white;
+    border-spacing: 15px;
+}
 
 
 
-
-  
 
 /* start main */
 
@@ -567,7 +615,7 @@ nav .breadcrumb {
         min-height: 350px;
         height: auto;
     }
-    
+
     .trailer,
     .buy-ticket {
         margin-left: 0;
@@ -601,17 +649,18 @@ nav .breadcrumb {
 }
 
 div#letstalk {
-	padding: 15px 60px;
-	background: transparent;
-	max-width: 800px;
-	border: 1px solid #E8ECEC;
-	border-radius: 4px;
-	box-shadow: 0 4px 10px 4px rgba(176, 195, 210, 0.3); 
+    padding: 15px 60px;
+    background: transparent;
+    max-width: 800px;
+    border: 1px solid #E8ECEC;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(176, 195, 210, 0.3);
 }
 
 .form-group {
-	margin-bottom: 20px !important;
+    margin-bottom: 20px !important;
 }
+
 form select, .form_custom select {
     padding: 0px !important;
     font-size: 13px;
@@ -627,7 +676,7 @@ form select, .form_custom select {
 }
 
 .contact-submit {
-   background: rgb(64, 26, 130);
+    background: rgb(64, 26, 130);
     background: linear-gradient(90deg, rgba(64, 26, 130, 1) 0%, rgba(201, 0, 135, 1) 100%);
     border: none;
     border-radius: 2px;

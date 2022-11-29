@@ -23,7 +23,7 @@
                 <div class="menu-icon">
                     <label for="sideview-crawl" class="menu-bar">
                         <svg>
-                            <use xlink:href='./icons.svg#icon-menu'></use>
+                            
                         </svg>
                     </label>
                 </div>
@@ -107,7 +107,7 @@
                 </div>
                 <span class="content product-content">
                     <svg>
-                        <use xlink:href='./icons.svg#icon-package'></use>
+                   
                     </svg>
                     <div class="number">
                         <tr v-for="ticket in tickets">
@@ -124,7 +124,7 @@
                 </div>
                 <span class="content user-content">
                     <svg>
-                        <use xlink:href='./icons.svg#icon-user'></use>
+                        
                     </svg>
                     <div class="number">
                         <tr v-for="actor in actors">
@@ -141,7 +141,7 @@
                 </div>
                 <span class="content order-content">
                     <svg>
-                        <use xlink:href='./icons.svg#icon-briefcase'></use>
+                    
                     </svg>
                     <div class="number">
                         <tr v-for="location in locations2">
@@ -155,146 +155,7 @@
         </div>
     </main>
 
-    <!-- Ticket Section -->
-    <section class="product-section">
-        <div class="header">
-            <h1>Tickets</h1>
-        </div>
-
-
-
-
-
-        <!-- User Section -->
-        <section class="user-section">
-            <div class="header">
-                <h1>Users</h1>
-            </div>
-
-
-
-
-
-
-            <!-- Account Section -->
-            <section class="account-section">
-                <div class="header">
-                    <h1>Account</h1>
-                </div>
-
-
-
-
-
-                <div class="account-info">
-                    <div class="form-account info-name">
-                        <label>Name</label>
-                        <div class="account-field name-field">Admin Name</div>
-                    </div>
-                    <div class="form-account info-email">
-                        <label>Email Address</label>
-                        <div class="account-field email-field">Admin Email</div>
-                    </div>
-                    <div class="button-account">
-                        <button class="btn btn--green btn--admin">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-
-
-
-
-            <!---- NEW USER ---->
-            <section class="new--user_container">
-                <div class="new--user_header">
-                    <div class="back--btn">
-                        <a>
-                            <svg>
-                                <use xlink:href='./icons.svg#icon-skip-back'></use>
-                            </svg>
-                            <span>Back</span>
-                        </a>
-                    </div>
-                    <div class="header">
-                        <h1>New User</h1>
-                    </div>
-                </div>
-
-                <form class="form new--UserCreate__form">
-                    <div class="form-new user__name">
-                        <label>Name</label>
-                        <input type="text" class="new--user_name" placeholder="User Name" onfocus="this.placeholder= ''"
-                            onblur="this.placeholder= 'User Name'" required>
-                    </div>
-                    <div class="form-new user__email">
-                        <label>Email</label>
-                        <input type="text" class="new--user_email" placeholder="User Email"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= 'User Email'" required>
-                    </div>
-                    <div class="form-new user__password">
-                        <label>Password</label>
-                        <input type="password" class="new--user_password" placeholder="********"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= '********'" minlength='8' required>
-                    </div>
-                    <div class="form-new user__password-confirm">
-                        <label>Password Confirm</label>
-                        <input type="password" class="new--user_password-confirm" placeholder="********"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= '********'" minlength='8' required>
-                    </div>
-                    <div class="new--user_create">
-                        <button class="btn btn--create">Create</button>
-                    </div>
-                </form>
-            </section>
-
-
-
-
-
-
-
-            <!------ UPDATE USER ----->
-            <section class="update--user_container">
-                <div class="update--user_header">
-                    <div class="back--btn">
-                        <a>
-                            <svg>
-                                <use xlink:href='./icons.svg#icon-skip-back'></use>
-                            </svg>
-                            <span>Back</span>
-                        </a>
-                    </div>
-                    <div class="header">
-                        <h1>Update User</h1>
-                    </div>
-                </div>
-
-
-                <form class="form update--user_form">
-                    <div class="form-update user__name">
-                        <label>Name</label>
-                        <input type="text" class="update--user_name" placeholder="User Name"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= 'User Name'" required>
-                    </div>
-                    <div class="form-update user__email">
-                        <label>Email</label>
-                        <input type="text" class="update--user_email" placeholder="User Email"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= 'User Email'" required>
-                    </div>
-                    <div class="form-update user__password">
-                        <label>Password</label>
-                        <input type="password" class="update--user_password" placeholder="********"
-                            onfocus="this.placeholder= ''" onblur="this.placeholder= '********'" minlength='8' required>
-                    </div>
-                    <div class="update--user">
-                        <button class="btn btn--update">Update</button>
-                    </div>
-                </form>
-            </section>
-
+    
          
 </body>
 
