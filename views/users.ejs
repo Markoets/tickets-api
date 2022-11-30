@@ -9,7 +9,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title" style="color: white;">Users</h4>
+                <h4 class="card-title" style="color: black;">Users</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -31,7 +31,7 @@
                     <tbody>  
                       <tr>
                         <td>
-                          <div class="control-group">
+                          <div class="main-div">
                             <div class="mb-0 form-floating controls pb-2">
                               <p><%= user.id %></p>
                                <form :id="`update${users._id}`" action="/users/update/<%= user.id %>" method="POST">
@@ -39,7 +39,7 @@
                           </div>
                         </td>
                         <td>
-                          <div class="control-group">
+                          <div class="main-div">
                             <div class="mb-0 form-floating controls pb-2"><input  type="name" name="email" 
                                style="width: 306px;">
                                <h3><%= user.email %></h3> 
@@ -47,7 +47,7 @@
                           </div>
                         </td>
                         <td>
-                          <div class="control-group">
+                          <div class="main-div">
                             <div class="mb-0 form-floating controls pb-2"><input  type="name" name="role" 
                                style="width: 306px;">
                                <h3><%= user.role %></h3> 
@@ -55,7 +55,7 @@
                           </div>
                         </td>
                         <td>
-                          <div class="control-group">
+                          <div class="main-div">
                             <div class="mb-0 form-floating controls pb-2"><input  type="password" name="password" 
                                style="width: 306px;">
                                <h3><%= user.password %></h3> 

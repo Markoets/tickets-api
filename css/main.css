@@ -103,7 +103,7 @@ nav {
     padding: 0;
     box-sizing: border-box;
     border-spacing: 15px;
-    
+    color: white;
 }
 
 #second-div{
@@ -111,12 +111,14 @@ nav {
     border-spacing: 15px;
 }
 
-input {
-    background-color: white;
+
+
+#input-delete {
+    background-color: transparent;
     box-shadow: black;
     padding: 5px;
     margin: 5px;
-    color: black;
+    color: white;
     border: none;
     border-spacing: 15px;
     text-align: center;

@@ -17,17 +17,12 @@
         <div class="col-lg-3 mx-auto">
           <form action="/signup" method="POST">
             <div class="control-group">
-              <label for="role" class="form-label">Role</label>
-              <select class="form-select" aria-label="Default select example" name="role">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-              </select>
-              <div class="mb-2 form-floating controls pb-2"><input type="email" name="email" required
+              <div id="signup" class="mb-2 form-floating controls pb-2"><input type="email" name="email" required
                   placeholder="enter your email" style="width: 306px;">
               </div>
             </div>
             <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input type="password" name="password" required
+              <div class="mb-0 form-floating controls pb-2"><input class="input-login"  type="password" name="password" required
                   placeholder="enter your password" style="width: 306px;"></div>
             </div>
 

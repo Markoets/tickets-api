@@ -81,54 +81,34 @@ function randomIntFromInterval(min, max) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-/*async function seedDB() {
-    // Connection URL
-    const uri = "mongodb://localhost:27017/ticketsApiDb";
+(async () => {
+  let data = {
+    email: 'admin@admin.admin',
+    password: 'admin',
+    role: 'admin',
+  };
+  let saltRounds = 10;
+  let hashedPassword = await bcrypt.hash(data.password, saltRounds);
 
-    const client = new MongoClient(uri, {
-        useNewUrlParser: true,
-        // useUnifiedTopology: true,
-    });
+  data.password = hashedPassword;
+  console.log(data.password);
 
+  const seedDatabase = async () => {
     try {
-        await client.connect();
-        console.log("Connected correctly to server");
-
-        const collection = client.db("ticketsApiDb").collection("tickets");
-
-        // The drop() command destroys all data from a collection.
-        // Make sure you run it against proper database and collection.
-        collection.drop();
-
-        // make a bunch of time series data
-        let timeSeriesData = [];
-
-        for (let i = 0; i < 50; i++) {
-            const name = faker.name.firstName();
-            const cast = faker.name.lastName();
-            const price = faker.finance.amount(5,20,0);
-            let ticket = {
-              
-                    cast: name, cast,
-                    name,
-                    price,
-           
-            };
-
-            
-            timeSeriesData.push(ticket);
-        }
-        collection.insertMany(timeSeriesData);
-
-        console.log("Database seeded! :)");
-        
-    } catch (err) {
-        console.log(err.stack);
+      await User.deleteMany({});
+      await User.insertMany(data);
+      console.log('Seeding successful');
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
 
-seedDB();
-*/
+  seedDatabase().then(() => {
+  //  mongoose.connection.close();
+  });
+})();
+
+
 
 app.post('/tickets/delete/:id', async (req, res) => {
     await Ticket.deleteOne({_id: req.params.id})
@@ -151,3 +131,4 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.listen(port, () => {
     console.log(`API up at: http://localhost${port}`);
 })
+
