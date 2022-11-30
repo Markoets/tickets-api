@@ -2,54 +2,62 @@
 <% if(locals.user.role=='admin'){ %>
 
     <div id="app">
-        <table id="actorsTable" class="moviestable table-striped table-bordered ticketsTable ">
+        <table  cellspacing="0" cellpadding="0"  id="actorsTable" class="moviestable table-striped table-bordered ticketsTable ">
           <tr>
             <th>Actor name</th>
             <th>Actor gender </th>
             <th>Actor age </th>
             <th>Image link</th>
+            <th>Actions</th>
+            <th></th>
           </tr>
           <tr v-for="actor in actors">
             <td>
-              <div class="control-group">
-                <div class="mb-0 form-floating controls pb-2"><input :form="`update${actor._id}`" :value="actor.name" type="name" name="name" required
+              <div class="main-div">
+                <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" id ="input-delete" :form="`update${actor._id}`" :value="actor.name" type="name" name="name" required
                    style="width: 306px;">
                   </div>
               </div>
             </td>
           <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${actor._id}`" :value="actor.gender" type="name" name="gender" required
+            <div class="main-div">
+              <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" id ="input-delete" :form="`update${actor._id}`" :value="actor.gender" type="name" name="gender" required
                  style="width: 306px;">
                 </div>
             </div>
           </td>
           <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${actor._id}`" :value="actor.age" type="number" name="age" required
+            <div class="main-div">
+              <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" id ="input-delete" :form="`update${actor._id}`" :value="actor.age" type="number" name="age" required
                  style="width: 306px;">
                 </div>
             </div>
           </td>
           <td>
-            <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input :form="`update${actor._id}`" :value="actor.image" type="name" name="image" required
+            <div class="main-div">
+              <div class="mb-5 form-floating controls pb" id="second-div"><input class="shadow-lg" id ="input-delete" :form="`update${actor._id}`" :value="actor.image" type="name" name="image" required
                  style="width: 306px;">
                 </div>
             </div>
           </td>
       <td>
-        <form :action="`actors/delete/${actor._id}`" method="post">
-          <button type='submit' class="nupp">Delete</button>
-        </form>
-
+      
+    
+              <form :action="`actors/delete/${actor._id}`" method="post">
+                <button class="btn btn-primary " id="sendMessageButton" type="submit"
+                  style="width: 306px;">Delete</button>
+              </form>
+            </div>
+          </td>
+            <td>
             <div id="success"></div>
             <div>
               <form :action="`actors/update/${actor._id}`" method="POST" :id="`update${actor._id}`">
-                <button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit"
-                style="width: 306px;">Update</button>    </form>
+                <button class="btn btn-primary " id="sendMessageButton" type="submit"
+                  style="width: 306px;">Update</button>
+              </form>
             </div>
-
+  
           </td>
 
       
