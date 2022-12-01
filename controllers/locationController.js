@@ -22,7 +22,7 @@ exports.createNew = (req, res) => {
     const new_location = new Location(req.body)
     new_location.save((err, location) => {
         if (err) {
-            res.render("locationsAdd",{title:"Error"})
+            res.render("locationsAdd",{title:"Error please fill in all the fields!"})
         } else {
             ticket2=`${getBaseUrl(req)}/locations/${location.id}`
             console.log(ticket2+'aaa');

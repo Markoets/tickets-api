@@ -8,22 +8,22 @@
         <div class="col-lg-3 mx-auto">
           <form action="/actors" method="POST">
             <div class="control-group">
-              <div class="mb-2 form-floating controls pb-2"><input type="name" name="name" placeholder="enter the name"
+              <div class="mb-2 form-floating controls pb-2"><input type="name" required name="name" placeholder="enter the name"
                   style="width: 306px;">
               </div>
               <p>Gender</p>
-              <input type="radio" name="gender" id="rad1" value="Male">
+              <input type="radio" name="gender" id="rad1" value="Male" required>
               <label for="rad1">Male</label>
               <input type="radio" name="gender" id="rad2" value="Female">
               <label for="rad2">Female</label>
             </div>
             <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input type="number" name="age" placeholder="enter the age"
+              <div class="mb-0 form-floating controls pb-2"><input type="number"  required name="age" placeholder="enter the age"
                   style="width: 306px;"></div>
             </div>
 
             <div class="control-group">
-              <div class="mb-0 form-floating controls pb-2"><input type="name" name="image"
+              <div class="mb-0 form-floating controls pb-2"><input type="name" required name="image"
                   placeholder="enter the image" style="width: 306px;"></div>
             </div>
 

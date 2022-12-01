@@ -22,7 +22,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="actor"><i class="fas fa-user"></i> Actors</a>
                 </li>
-            </ul>
+         
+            <% if(locals.user){ %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Add
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/ticketsAdd">Add tickets</a></li>
+                  <li><a class="dropdown-item" href="/actorsAdd">Add actors</a></li>
+                  <li><a class="dropdown-item" href="/locationsAdd">Add locations</a></li>
+                </ul>
+              </li>
+              <% } %>
+              <% if(locals.user){ %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Show
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/ticketsDelete">Show tickets</a></li>
+                      <li><a class="dropdown-item" href="/actorsDelete">Show actors</a></li>
+                      <li><a class="dropdown-item" href="/locationsDelete">Show locations</a></li>
+                    </ul>
+                  </li>
+                  <% } %>
+                </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                 <% if(!locals.user){ %>
                     <li class="nav-item ">
@@ -38,6 +63,7 @@
                         </li>
                         <% } %>
             </ul>
+            
 
 
 

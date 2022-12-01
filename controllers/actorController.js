@@ -21,7 +21,7 @@ exports.createNew = (req, res) => {
     const new_actor = new Actor(req.body)
     new_actor.save((err, actor) => {
         if (err) {
-            res.render("actorsAdd",{title:"Error"})
+            res.render("actorsAdd",{title:"Error please fill in all the fields!"})
         } else {
             ticket2=`${getBaseUrl(req)}/actors/${actor.id}`
             console.log(`${getBaseUrl(req)}/actors/${actor.id}`);

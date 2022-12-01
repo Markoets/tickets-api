@@ -12,8 +12,8 @@
   --secondary-color: #2e2b2b;
   --dark-green-color: #2e2b2b;
   --white-color: #efefef;
-  --main-content-color: #2e2b2b;
-  --grey-color: #efefef;
+  --main-content-color: white;
+  --grey-color: black;
 }
 
 ::-moz-selection {
