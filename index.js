@@ -110,6 +110,162 @@ function randomIntFromInterval(min, max) { // min and max included
 
 
 
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+async function seedDBtickets() {
+    // Connection URL
+    const uri = "mongodb://localhost:27017/ticketsApiDb";
+
+    const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        // useUnifiedTopology: true,
+    });
+
+    try {
+        await client.connect();
+
+        const collection = client.db("ticketsApiDb").collection("tickets");
+
+        // The drop() command destroys all data from a collection.
+        // Make sure you run it against proper database and collection.
+        collection.drop();
+
+        // make a bunch of time series data
+        let timeSeriesData = [];
+
+        for (let i = 0; i < 10; i++) {
+            const name = faker.name.firstName();
+            const cast = faker.name.lastName();
+            const price = faker.finance.amount(5,20,0);
+            const image = faker.image.abstract(1234, 2345)
+            let ticket = {
+
+                    cast: name, cast,
+                    name,
+                    price,
+                    image
+
+            };
+
+
+            timeSeriesData.push(ticket);
+        }
+        collection.insertMany(timeSeriesData);
+
+
+    } catch (err) {
+        console.log(err.stack);
+    }
+}
+
+seedDBtickets();
+
+
+async function seedDBactors() {
+  // Connection URL
+  const uri = "mongodb://localhost:27017/ticketsApiDb";
+
+  const client = new MongoClient(uri, {
+      useNewUrlParser: true,
+      // useUnifiedTopology: true,
+  });
+
+  try {
+      await client.connect();
+
+
+      const collection = client.db("ticketsApiDb").collection("actors");
+
+      // The drop() command destroys all data from a collection.
+      // Make sure you run it against proper database and collection.
+      collection.drop();
+
+      // make a bunch of time series data
+      let timeSeriesData = [];
+
+      for (let i = 0; i < 10; i++) {
+          const name = faker.name.firstName();
+          const age = faker.datatype.number(70) 
+          const gender = faker.name.sex()
+          const image = faker.image.abstract(1234, 2345)
+          let actor = {
+
+                  name,
+                  age,
+                  gender,
+                  image
+
+          };
+
+
+          timeSeriesData.push(actor);
+      }
+      collection.insertMany(timeSeriesData);
+
+
+
+  } catch (err) {
+      console.log(err.stack);
+  }
+}
+
+seedDBactors();
+
+
+async function seedDBlocations() {
+  // Connection URL
+  const uri = "mongodb://localhost:27017/ticketsApiDb";
+
+  const client = new MongoClient(uri, {
+      useNewUrlParser: true,
+      // useUnifiedTopology: true,
+  });
+
+  try {
+      await client.connect();
+
+
+      const collection = client.db("ticketsApiDb").collection("locations");
+
+      // The drop() command destroys all data from a collection.
+      // Make sure you run it against proper database and collection.
+      collection.drop();
+
+      // make a bunch of time series data
+      let timeSeriesData = [];
+
+      for (let i = 0; i < 10; i++) {
+          const country = faker.address.country()
+          const city = faker.address.cityName(); 
+          const street = faker.address.street()
+          const image = faker.image.abstract(1234, 2345)
+          let location = {
+
+            country,
+                  city,
+                  street,
+                  image
+
+          };
+
+
+          timeSeriesData.push(location);
+      }
+      collection.insertMany(timeSeriesData);
+
+
+
+  } catch (err) {
+      console.log(err.stack);
+  }
+}
+
+seedDBlocations();
+
+
+
 app.post('/tickets/delete/:id', async (req, res) => {
     await Ticket.deleteOne({_id: req.params.id})
     return res.redirect('/admin')
