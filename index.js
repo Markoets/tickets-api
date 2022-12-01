@@ -187,9 +187,9 @@ async function seedDBactors() {
 
       for (let i = 0; i < 10; i++) {
           const name = faker.name.firstName();
-          const age = faker.datatype.number(70) 
+          const age = faker.datatype.number({min:20,max:70}) 
           const gender = faker.name.sex()
-          const image = faker.image.abstract(1234, 2345)
+          const image = faker.image.people()
           let actor = {
 
                   name,
@@ -240,7 +240,7 @@ async function seedDBlocations() {
           const country = faker.address.country()
           const city = faker.address.cityName(); 
           const street = faker.address.street()
-          const image = faker.image.abstract(1234, 2345)
+          const image = faker.image.city(1234, 2345)
           let location = {
 
             country,
