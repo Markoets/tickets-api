@@ -78,15 +78,13 @@ nav {
 .ticketsTable {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 0%);
     width: 800px;
     border: none;
     border-spacing: 15px;
 }
 
-.nav-button {
-    margin-left: 1350px;
-}
+
 
 .carousel-item img {
     height: 75vh;
