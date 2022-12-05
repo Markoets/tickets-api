@@ -25,6 +25,11 @@ exports.createNew = (req, res) => {
         } else {
             ticket2=`${getBaseUrl(req)}/tickets/${ticket.id}`
             console.log(ticket2+'aaa');
+            id=`${ticket.id}`
+            name=`${ticket.name}`
+            field1=`${ticket.cast}`
+            field2=`${ticket.price}`
+            field3=`${ticket.image}`
             console.log(`Added a new ticket  at:  ${getBaseUrl(req)}/tickets/${ticket.id}`);
             res.redirect('admin')
         }
@@ -59,7 +64,7 @@ exports.editById = function (req, res) {     //Update
             res.status(400).send(err)
         } else {
             console.log(ticket);
-            res.status(200).json(ticket)
+            res.redirect('/admin')
         }
     })
     }

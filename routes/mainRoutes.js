@@ -34,7 +34,7 @@ const { user,role} = require('../controllers/loginController');
   app.get('/locationsAdd', requireAuth, (req, res) => res.render('locationsAdd', { title: "Add locations" }));
   
   app.get('/admin', requireAuth, (req, res) =>
-   res.render('admin', { title:ticket2 }));
+   res.render('admin', { title:ticket3,name:name,id:id,field1:field1,field2:field2,field3:field3 }));
 
 
     // (role=='admin')?app.get('/ticketsDelete',  (req, res) => res.render('ticketsDelete', { title: "Add locations" }))
@@ -48,7 +48,13 @@ const { user,role} = require('../controllers/loginController');
     app.get('/locationsDelete', requireAuth, (req, res) => res.render('locationsDelete', { title: "Delete locations" }));
 
    
-  ticket2='Admin'
+  ticket3='Admin'
+  name='Admin'
+  id=``
+  name=``
+  field1=``
+  field2=``
+  field3=``
   
   var User = require('../models/userModel'); //the connection to users database
    app.get('/users',requireAuth,function (req, res) {

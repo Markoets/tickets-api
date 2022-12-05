@@ -23,7 +23,11 @@ exports.createNew = (req, res) => {
         if (err) {
             res.render("actorsAdd",{title:"Error please fill in all the fields!"})
         } else {
-            ticket2=`${getBaseUrl(req)}/actors/${actor.id}`
+            id=`${actor.id}`
+            name=`${actor.name}`
+            field1=`${actor.gender}`
+            field2=`${actor.age}`
+            field3=`${actor.image}`
             console.log(`${getBaseUrl(req)}/actors/${actor.id}`);
             res.redirect('admin')
         }

@@ -26,6 +26,11 @@ exports.createNew = (req, res) => {
         } else {
             ticket2=`${getBaseUrl(req)}/locations/${location.id}`
             console.log(ticket2+'aaa');
+            id=`${location.id}`
+            name=`${location.country}`
+            field1=`${location.city}`
+            field2=`${location.street}`
+            field3=`${location.image}`
             console.log(`${getBaseUrl(req)}/locations/${location.id}`);
             res.redirect('admin')
         }
