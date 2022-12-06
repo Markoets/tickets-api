@@ -7,7 +7,9 @@
     <main class="main main-content">
         <div class="header">
             <h1>Welcome back, Human <%= locals.user.email %> </h1>
+            <% if(name){ %>
             <p><a href="<%= title %>" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">Added new by the name of :  <%= name%></a></p> 
+            <% } %>
         </div>
         
         <div class="overview-cards">
