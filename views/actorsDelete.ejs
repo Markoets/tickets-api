@@ -43,10 +43,7 @@
       <td>
       
     
-              <form :action="`actors/delete/${actor._id}`" method="post">
-                <button class="btn btn-primary " id="sendMessageButton" type="submit"
-                  style="width: 306px;">Delete</button>
-              </form>
+        <button class="delete-button btn btn-primary " @click="confirmDeleteActor(actor._id)">Delete</button>
             </div>
           </td>
             <td>

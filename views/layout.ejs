@@ -88,7 +88,41 @@
                 throw Error("Cannot delete your item from list");
               }
               return location;
-            }//, myFunction() {
+            },confirmDeleteTicket: async function (ticketId) {
+  var shouldDelete = confirm("Are you sure you want to delete this item?");
+  if (shouldDelete) {
+    console.log(ticketId);
+    await (await fetch(`http://localhost:8088/tickets/${ticketId}`,{
+      method:'delete',
+    }));
+
+  }
+},
+confirmDeleteActor: async function (actorId) {
+  var shouldDelete = confirm("Are you sure you want to delete this item?");
+  if (shouldDelete) {
+    console.log(actorId);
+    await (await fetch(`http://localhost:8088/actors/${actorId}`,{
+      method:'delete',
+    }));
+
+  }
+},
+confirmDeleteLocation: async function (locationId) {
+  var shouldDelete = confirm("Are you sure you want to delete this item?");
+  if (shouldDelete) {
+    console.log(locationId);
+    await (await fetch(`http://localhost:8088/locations/${locationId}`,{
+      method:'delete',
+    }));
+
+  }
+}
+
+
+            
+            
+            //, myFunction() {
               // Declare variables
               // var input, filter, table, tr, td, i, txtValue;
               // input = document.getElementById("myInput");
