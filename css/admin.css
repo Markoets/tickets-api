@@ -826,17 +826,6 @@ body {
   font-size: 2rem;
 }
 
-.update--product_header .back--btn a:link,
-a:visited {
-  color: var(--grey-color);
-  text-decoration: none;
-  cursor: pointer;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
 
 .update--product_header .back--btn span {
   font-size: 1.5rem;
